@@ -16,9 +16,9 @@ public class Toolbox : Singleton<Toolbox> {
 	private DragState dragState = DragState.None;
 
 	/** The minimum duration, in seconds, that can elapse between mouse clicks */
-	public float clickDelay = 0.3f;
+	public float clickDelay = 0.1f;
 	/**<The maximum duration, in seconds, between two successive mouse clicks to register a "double-click" */
-	public float doubleClickDelay = 1f;
+	public float doubleClickDelay = 0.2f;
 	
 	private float clickTime = 0f;
 	private float doubleClickTime = 0;
