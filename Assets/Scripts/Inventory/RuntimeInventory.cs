@@ -28,11 +28,11 @@ namespace AC
 		/** A List of inventory items (InvItem) being used in the current Recipe being crafted */
 		[HideInInspector] public List<InvItem> craftingItems = new List<InvItem>();
 		/** The default ActionListAsset to run if an inventory combination is unhandled */
-		[HideInInspector] public ActionListAsset unhandledCombine;
+		//[HideInInspector] public ActionListAsset unhandledCombine;
 		/** The default ActionListAsset to run if using an inventory item on a Hotspot is unhandled */
-		[HideInInspector] public ActionListAsset unhandledHotspot;
+		//[HideInInspector] public ActionListAsset unhandledHotspot;
 		/** The default ActionListAsset to run if giving an inventory item to an NPC is unhandled */
-		[HideInInspector] public ActionListAsset unhandledGive;
+		//[HideInInspector] public ActionListAsset unhandledGive;
 
 		/** The inventory item that is currently selected */
 		[HideInInspector] public InvItem selectedItem = null;
@@ -45,11 +45,11 @@ namespace AC
 		/** A List of index numbers within a Button's invButtons List that represent inventory interactions currently available to the player */
 		[HideInInspector] public List<int> matchingInvInteractions = new List<int>();
 
-		private SelectItemMode selectItemMode = SelectItemMode.Use;
+		//private SelectItemMode selectItemMode = SelectItemMode.Use;
 		private GUIStyle countStyle;
-		private TextEffects countTextEffects;
+		//private TextEffects countTextEffects;
 		
-		private HighlightState highlightState = HighlightState.None;
+		//private HighlightState highlightState = HighlightState.None;
 		private float pulse = 0f;
 		private int pulseDirection = 0; // 0 = none, 1 = in, -1 = out
 		
@@ -57,6 +57,7 @@ namespace AC
 		/**
 		 * Transfers any relevant data from InventoryManager when the game begins or restarts.
 		 */
+		/*
 		public void Start ()
 		{
 			selectedItem = null;
@@ -77,34 +78,36 @@ namespace AC
 			{
 				Debug.LogError ("An Inventory Manager is required - please use the Adventure Creator window to create one.");
 			}
-		}
+		}*/
 		
-		
+		/*
 		private void OnLevelWasLoaded ()
 		{
 			if (!KickStarter.settingsManager.IsInLoadingScene ())
 			{
 				SetNull ();
 			}
-		}
+		}*/
 		
 
 		/**
 		 * De-selects the active inventory item.
 		 */
+		/*
 		public void SetNull ()
 		{
 			selectedItem = null;
 			highlightItem = null;
 			PlayerMenus.ResetInventoryBoxes ();
 		}
-		
+		*/
 
 		/**
 		 * <summary>Selects an inventory item (InvItem) by referencing it's ID number.</summary>
 		 * <param name = "_id">The inventory item's ID number</param>
 		 * <param name = "_mode">What mode the item is selected in (Use, Give)</param>
 		 */
+		/*
 		public void SelectItemByID (int _id, SelectItemMode _mode = SelectItemMode.Use)
 		{
 			if (_id == -1)
@@ -126,7 +129,7 @@ namespace AC
 			
 			SetNull ();
 			Debug.LogWarning ("Want to select inventory item " + KickStarter.inventoryManager.GetLabel (_id) + " but player is not carrying it.");
-		}
+		}*/
 		
 
 		/**
@@ -134,6 +137,7 @@ namespace AC
 		 * <param name = "_id">The inventory item to selet</param>
 		 * <param name = "_mode">What mode the item is selected in (Use, Give)</param>
 		 */
+		/*
 		public void SelectItem (InvItem item, SelectItemMode _mode = SelectItemMode.Use)
 		{
 			if (selectedItem == item)
@@ -147,9 +151,9 @@ namespace AC
 				selectedItem = item;
 			}
 			PlayerMenus.ResetInventoryBoxes ();
-		}
+		}*/
 		
-		
+		/*
 		private void SetSelectItemMode (SelectItemMode _mode)
 		{
 			if (KickStarter.settingsManager.CanGiveItems ())
@@ -160,13 +164,14 @@ namespace AC
 			{
 				selectItemMode = SelectItemMode.Use;
 			}
-		}
+		}*/
 		
 
 		/**
 		 * <summary>Checks if the currently-selected item is in "give" mode, as opposed to "use".</summary>
 		 * <returns>True if the currently-selected item is in "give" mode, as opposed to "use"</returns>
 		 */
+		/*
 		public bool IsGivingItem ()
 		{
 			if (selectItemMode == SelectItemMode.Give)
@@ -174,9 +179,9 @@ namespace AC
 				return true;
 			}
 			return false;
-		}
+		}*/
 		
-		
+		/*
 		private void GetItemsOnStart ()
 		{
 			if (KickStarter.inventoryManager)
@@ -238,7 +243,7 @@ namespace AC
 			{
 				Debug.LogError ("No Inventory Manager found - please use the Adventure Creator window to create one.");
 			}
-		}
+		}*/
 
 
 		/**
@@ -247,6 +252,7 @@ namespace AC
 		 * <param name = "_removeID">The ID number of the inventory item (InvItem) to remove</param>
 		 * <param name = "addAmount">The amount if the new inventory item to add, if the InvItem's canCarryMultiple = True</param>
 		 */
+		/*
 		public void Replace (int _addID, int _removeID, int addAmount = 1)
 		{
 			int _index = -1;
@@ -285,7 +291,7 @@ namespace AC
 					return;
 				}
 			}
-		}
+		}*/
 
 
 		/**
@@ -295,6 +301,7 @@ namespace AC
 		 * <param name = "selectAfter">If True, then the inventory item will be automatically selected</param>
 		 * <param name = "playerID">The ID number of the Player to receive the item, if multiple Player prefabs are supported. If playerID = 0, the current player will receive the item</param>
 		 */
+		/*
 		public void Add (int _id, int amount = 1, bool selectAfter = false, int playerID = 0)
 		{
 			if (playerID >= 0 && KickStarter.player.ID != playerID)
@@ -305,7 +312,7 @@ namespace AC
 			{
 				localItems = Add (_id, amount, localItems, selectAfter);
 			}
-		}
+		}*/
 
 
 		/**
@@ -316,6 +323,7 @@ namespace AC
 		 * <param name = "selectAfter">If True, then the inventory item will be automatically selected</param>
 		 * <returns>The modified List of inventory items</returns>
 		 */
+		/*
 		public List<InvItem> Add (int _id, int amount, List<InvItem> itemList, bool selectAfter)
 		{
 			itemList = ReorderItems (itemList);
@@ -409,7 +417,7 @@ namespace AC
 			
 			itemList = RemoveEmptySlots (itemList);
 			return itemList;
-		}
+		}*/
 		
 
 		/**
@@ -419,6 +427,7 @@ namespace AC
 		 * <param name = "setAmount">If False, then all instances of the inventory item will be removed, even if the InvItem's canCarryMultiple = True</param>
 		 * <param name = "playerID">The ID number of the Player to lose the item, if multiple Player prefabs are supported. If playerID = 0, the current player will lose the item</param>
 		 */
+		/*
 		public void Remove (int _id, int amount, bool setAmount, int playerID = 0)
 		{
 			if (playerID >= 0 && KickStarter.player.ID != playerID)
@@ -429,9 +438,10 @@ namespace AC
 			{
 				localItems = Remove (_id, amount, setAmount, localItems);
 			}
-		}
+		}*/
 		
-		
+
+		/*
 		private void AddToOtherPlayer (int invID, int amount, int playerID)
 		{
 			SaveSystem saveSystem = GetComponent <SaveSystem>();
@@ -439,9 +449,9 @@ namespace AC
 			List<InvItem> otherPlayerItems = saveSystem.GetItemsFromPlayer (playerID);
 			otherPlayerItems = Add (invID, amount, otherPlayerItems, false);
 			saveSystem.AssignItemsToPlayer (otherPlayerItems, playerID);
-		}
+		}*/
 		
-		
+		/*
 		private void RemoveFromOtherPlayer (int invID, int amount, bool setAmount, int playerID)
 		{
 			SaveSystem saveSystem = GetComponent <SaveSystem>();
@@ -449,13 +459,14 @@ namespace AC
 			List<InvItem> otherPlayerItems = saveSystem.GetItemsFromPlayer (playerID);
 			otherPlayerItems = Remove (invID, amount, setAmount, otherPlayerItems);
 			saveSystem.AssignItemsToPlayer (otherPlayerItems, playerID);
-		}
+		}*/
 		
 
 		/**
 		 * <summary>Removes an inventory item from the player's inventory.</summary>
 		 * <param name = "_item">The inventory item (InvItem) to remove</param>
 		 */
+		/*
 		public void Remove (InvItem _item)
 		{
 			if (_item != null && localItems.Contains (_item))
@@ -470,9 +481,9 @@ namespace AC
 				localItems = ReorderItems (localItems);
 				localItems = RemoveEmptySlots (localItems);
 			}
-		}
+		}*/
 		
-		
+		/*
 		private List<InvItem> Remove (int _id, int amount, bool setAmount, List<InvItem> itemList)
 		{
 			if (amount <= 0)
@@ -535,7 +546,7 @@ namespace AC
 			itemList = RemoveEmptySlots (itemList);
 			
 			return itemList;
-		}
+		}*/
 
 
 		/**
@@ -546,6 +557,7 @@ namespace AC
 		 * <param name = "canGive">If True, the the item is assumed to be in "give" mode, as opposed to "use".</param>
 		 * <returns>The full prefix to a Hotspot label when the item is selected</returns>
 		 */
+		/*
 		public string GetHotspotPrefixLabel (InvItem item, string itemName, int languageNumber, bool canGive = false)
 		{
 			string prefix1 = "";
@@ -581,9 +593,9 @@ namespace AC
 			}
 
 			return (prefix1 + " " + itemName + " " + prefix2 + " ");
-		}
+		}*/
 		
-		
+		/*
 		private List<InvItem> ReorderItems (List<InvItem> invItems)
 		{
 			if (!KickStarter.settingsManager.canReorderItems)
@@ -610,7 +622,7 @@ namespace AC
 				}
 			}
 			return invItems;
-		}
+		}*/
 		
 		
 		private void RemoveEmptyCraftingSlots ()
@@ -654,6 +666,7 @@ namespace AC
 		 * <param name = "languageNumber">The index of the current language, as set in SpeechManager</param>
 		 * <returns>The inventory item's display name</returns>
 		 */
+		/*
 		public string GetLabel (InvItem item, int languageNumber)
 		{
 			if (languageNumber > 0)
@@ -665,7 +678,7 @@ namespace AC
 				return (item.altLabel);
 			}
 			return (item.label);
-		}
+		}*/
 		
 
 		/**
@@ -693,6 +706,7 @@ namespace AC
 		 * <param name = "playerID">The ID number of the Player to refer to</param>
 		 * <returns>The amount of the inventory item within the player's inventory.</returns>
 		 */
+		/*
 		public int GetCount (int _invID, int _playerID)
 		{
 			List<InvItem> otherPlayerItems = GetComponent <SaveSystem>().GetItemsFromPlayer (_playerID);
@@ -708,7 +722,7 @@ namespace AC
 				}
 			}
 			return 0;
-		}
+		}*/
 		
 
 		/**
@@ -753,6 +767,7 @@ namespace AC
 		 * <summary>Runs an inventory item's "Examine" interaction.</summary>
 		 * <param name = "item">The inventory item to examine</param>
 		 */
+		/*
 		public void Look (InvItem item)
 		{
 			if (item == null || item.recipeSlot > -1) return;
@@ -761,13 +776,14 @@ namespace AC
 			{
 				AdvGame.RunActionListAsset (item.lookActionList);
 			}
-		}
+		}*/
 		
 
 		/**
 		 * <summary>Runs an inventory item's "Use" interaction.</summary>
 		 * <param name ="item">The inventory item to use</param>
 		 */
+		/*
 		public void Use (InvItem item)
 		{
 			if (item == null || item.recipeSlot > -1) return;
@@ -781,7 +797,7 @@ namespace AC
 			{
 				SelectItem (item, SelectItemMode.Use);
 			}
-		}
+		}*/
 		
 
 		/**
@@ -789,6 +805,7 @@ namespace AC
 		 * <param name = "invItem">The relevant inventory item</param>
 		 * <param name = "iconID">The ID number of the interaction's icon, defined in CursorManager</param>
 		 */
+		/*
 		public void RunInteraction (InvItem invItem, int iconID)
 		{
 			if (invItem == null || invItem.recipeSlot > -1) return;
@@ -823,7 +840,7 @@ namespace AC
 			}
 			
 			AdvGame.RunActionListAsset (KickStarter.cursorManager.GetUnhandledInteraction (iconID));
-		}
+		}*/
 		
 
 		/**
@@ -831,6 +848,7 @@ namespace AC
 		 * <param name = "iconID">The ID number of the interaction's icon, defined in CursorManager</param>
 		 * <param name = "clickedItem">If assigned, hoverItem will be become this before the interaction is run</param>
 		 */
+		/*
 		public void RunInteraction (int iconID, InvItem clickedItem = null)
 		{
 			if (clickedItem != null)
@@ -839,18 +857,19 @@ namespace AC
 			}
 
 			RunInteraction (hoverItem, iconID);
-		}
+		}*/
 		
 
 		/**
 		 * <summary>Sets up all "Interaction" menus according to a specific inventory item.</summary>
 		 * <param name = "item">The relevant inventory item</param>
 		 */
+		/*
 		public void ShowInteractions (InvItem item)
 		{
 			hoverItem = item;
 			KickStarter.playerMenus.SetInteractionMenus (true);
-		}
+		}*/
 
 
 		/**
@@ -858,6 +877,7 @@ namespace AC
 		 * <param name = "item">The item to set</param>
 		 * <param name = "displayType">The display type of the item in the Menu (IconOnly, TextOnly)</param>
 		 */
+		/*
 		public void SetHoverItem (InvItem item, ConversationDisplayType displayType = ConversationDisplayType.IconOnly)
 		{
 			hoverItem = item;
@@ -869,7 +889,7 @@ namespace AC
 			{
 				showHoverLabel = false;
 			}
-		}
+		}*/
 		
 
 		/**
@@ -877,10 +897,11 @@ namespace AC
 		 * <param name = "item1">The first inventory item to combine</param>
 		 * <param name = "item2ID">The ID number of the second inventory item to combine</param>
 		 */
+		/*
 		public void Combine (InvItem item1, int item2ID)
 		{
 			Combine (item1, GetItem (item2ID));
-		}
+		}*/
 		
 
 		/**
@@ -888,6 +909,7 @@ namespace AC
 		 * <param name = "item1">The first inventory item to combine</param>
 		 * <param name = "item2ID">The second inventory item to combine</param>
 		 */
+		/*
 		public void Combine (InvItem item1, InvItem item2)
 		{
 			if (item2 == null || item1 == null || item2.recipeSlot > -1)
@@ -952,7 +974,7 @@ namespace AC
 			}
 			
 			KickStarter.playerCursor.ResetSelectedCursor ();
-		}
+		}*/
 		
 
 		/**
@@ -994,6 +1016,7 @@ namespace AC
 		/**
 		 * Resets any active recipe, and clears all MenuCrafting elements.
 		 */
+		/*
 		public void RemoveRecipes ()
 		{
 			while (craftingItems.Count > 0)
@@ -1005,7 +1028,7 @@ namespace AC
 				}
 			}
 			PlayerMenus.ResetInventoryBoxes ();
-		}
+		}*/
 		
 
 		/**
@@ -1013,6 +1036,7 @@ namespace AC
 		 * <param name = "_recipeSlot">The index number of the MenuCrafting slot that the ingredient was placed in</param>
 		 * <param name = "selectAfter">If True, the inventory item will be selected once the transfer is complete</param>
 		 */
+		/*
 		public void TransferCraftingToLocal (int _recipeSlot, bool selectAfter)
 		{
 			foreach (InvItem item in craftingItems)
@@ -1025,7 +1049,7 @@ namespace AC
 					return;
 				}
 			}
-		}
+		}*/
 
 
 		/**
@@ -1033,6 +1057,7 @@ namespace AC
 		 * <param name = "_item">The inventory item to transfer</param>
 		 * <param name = "_slot">The index number of the MenuCrafting slot to place the item in</param>
 		 */
+		/*
 		public void TransferLocalToCrafting (InvItem _item, int _slot)
 		{
 			if (_item != null && localItems.Contains (_item))
@@ -1046,13 +1071,14 @@ namespace AC
 				
 				SetNull ();
 			}
-		}
+		}*/
 		
 
 		/**
 		 * <summary>Gets a list of inventory items associated with the interactions of the current Hotspot or item being hovered over.</summary>
 		 * <returns>A list of inventory items associated with the interactions of the current Hotspot or item being hovered over</returns>
 		 */
+		/*
 		public List<InvItem> MatchInteractions ()
 		{
 			List<InvItem> items = new List<InvItem>();
@@ -1084,7 +1110,7 @@ namespace AC
 				}
 			}
 			return items;
-		}
+		}*/
 		
 		
 		private List<InvItem> MatchInteractionsFromItem (List<InvItem> items, InvItem _item)
@@ -1113,6 +1139,7 @@ namespace AC
 		 * <param name = "autoCreateMatch">If True, then any Recipes with autoCreateMatch = False will be ignored</param>
 		 * <returns>The Recipe, if any, for which all ingredients have been correctly arranged</returns>
 		 */
+		/*
 		public Recipe CalculateRecipe (bool autoCreateMatch)
 		{
 			if (KickStarter.inventoryManager == null)
@@ -1165,9 +1192,9 @@ namespace AC
 			}
 			
 			return null;
-		}
+		}*/
 
-
+		/*
 		private bool IsRecipeInvalid (Recipe recipe)
 		{
 			// Are any invalid ingredients present?
@@ -1188,7 +1215,7 @@ namespace AC
 				}
 			}
 			return false;
-		}
+		}*/
 		
 
 		/**
@@ -1196,6 +1223,7 @@ namespace AC
 		 * <param name = "recipe">The Recipe to perform</param>
 		 * <param name = "selectAfter">If True, then the resulting inventory item will be selected once the crafting is complete</param>
 		 */
+		/*
 		public void PerformCrafting (Recipe recipe, bool selectAfter)
 		{
 			foreach (Ingredient ingredient in recipe.ingredients)
@@ -1222,7 +1250,7 @@ namespace AC
 			
 			RemoveEmptyCraftingSlots ();
 			Add (recipe.resultID, 1, selectAfter, -1);
-		}
+		}*/
 		
 
 		/**
@@ -1232,6 +1260,7 @@ namespace AC
 		 * <param name = "index">The index number of the MenuInventoryBox slot to move the item to</param>
 		 * <returns>The re-ordered List of inventory items</returns>
 		 */
+		/*
 		public List<InvItem> MoveItemToIndex (InvItem item, List<InvItem> items, int index)
 		{
 			if (item != null)
@@ -1260,7 +1289,7 @@ namespace AC
 				}
 			}
 			return items;
-		}
+		}*/
 		
 
 		/**
@@ -1270,6 +1299,7 @@ namespace AC
 		 * <param name = "color">The colour to set the font</param>
 		 * <param name = "textEffects">What text effect to apply (Outline, Shadow, OutlineAndShadow)</param>
 		 */
+		/*
 		public void SetFont (Font font, int size, Color color, TextEffects textEffects)
 		{
 			countStyle = new GUIStyle();
@@ -1278,13 +1308,14 @@ namespace AC
 			countStyle.normal.textColor = color;
 			countStyle.alignment = TextAnchor.MiddleCenter;
 			countTextEffects = textEffects;
-		}
+		}*/
 		
 
 		/**
 		 * <summary>Draws the currently-highlight item across a set region of the screen.</summary>
 		 * <param name = "_rect">The Screen-Space co-ordinates at which to draw the highlight item</param>
 		 */
+		/*
 		public void DrawHighlighted (Rect _rect)
 		{
 			if (highlightItem == null || highlightItem.activeTex == null) return;
@@ -1349,30 +1380,32 @@ namespace AC
 			GUI.DrawTexture (_rect, highlightItem.activeTex, ScaleMode.StretchToFill, true, 0f);
 			GUI.color = backupColor;
 			GUI.DrawTexture (_rect, highlightItem.tex, ScaleMode.StretchToFill, true, 0f);
-		}
+		}*/
 		
 
 		/**
 		 * <summary>Fully highlights an inventory item instantly.</summary>
 		 * <param name = "_id">The ID number of the inventory item (see InvItem) to highlight</param>
 		 */
+		/*
 		public void HighlightItemOnInstant (int _id)
 		{
 			highlightItem = GetItem (_id);
 			highlightState = HighlightState.None;
 			pulse = 1f;
-		}
+		}*/
 		
 
 		/**
 		 * Removes all highlighting from the inventory item curently being highlighted.
 		 */
+		/*
 		public void HighlightItemOffInstant ()
 		{
 			highlightItem = null;
 			highlightState = HighlightState.None;
 			pulse = 0f;
-		}
+		}*/
 		
 
 		/**
@@ -1380,6 +1413,7 @@ namespace AC
 		 * <param name = "_id">The ID number of the inventory item (see InvItem) to highlight</param>
 		 * <param name = "_type">The type of highlighting effect to perform (Enable, Disable, PulseOnce, PulseContinuously)</param>
 		 */
+		/*
 		public void HighlightItem (int _id, HighlightType _type)
 		{
 			highlightItem = GetItem (_id);
@@ -1407,7 +1441,7 @@ namespace AC
 				pulse = 0f;
 				pulseDirection = 1;
 			}
-		}
+		}*/
 		
 
 		/**
@@ -1416,6 +1450,7 @@ namespace AC
 		 * <param name = "cursorSize">The size to draw the number<param>
 		 * <param name = "count">The number to display</param>
 		 */
+		/*
 		public void DrawInventoryCount (Vector2 cursorPosition, float cursorSize, int count)
 		{
 			if (count > 1)
@@ -1429,8 +1464,9 @@ namespace AC
 					GUI.Label (AdvGame.GUIBox (cursorPosition, cursorSize), count.ToString (), countStyle);
 				}
 			}
-		}
+		}*/
 
+		/*
 		private void ClickInvItemToInteract ()
 		{
 			int invID = KickStarter.playerInteraction.GetActiveInvButtonID ();
@@ -1442,7 +1478,7 @@ namespace AC
 			{
 				Combine (hoverItem, invID);
 			}
-		}
+		}*/
 		
 
 		/**
@@ -1452,6 +1488,7 @@ namespace AC
 		 * <param name = "_slot">The index number of the MenuInventoryBox slot that was clicked on</param>
 		 * <param name = "_mouseState">The state of the mouse when the click occured (Normal, SingleClick, RightClick, DoubleClick, HeldDown, LetGo)</param>
 		 */
+		/*
 		public void ProcessInventoryBoxClick (AC.Menu _menu, MenuInventoryBox inventoryBox, int _slot, MouseState _mouseState)
 		{
 			if (inventoryBox.inventoryBoxType == AC_InventoryBoxType.Default || inventoryBox.inventoryBoxType == AC_InventoryBoxType.DisplayLastSelected)
@@ -1532,7 +1569,7 @@ namespace AC
 					Debug.LogWarning ("This type of InventoryBox only works with the Choose Hotspot Then Interaction method of interaction.");
 				}
 			}
-		}
+		}*/
 	}
 	
 }

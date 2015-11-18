@@ -63,30 +63,31 @@ namespace AC
 		/** If True, then the item has it's own "Use X on Y" syntax when selected */
 		public bool overrideUseSyntax = false;
 		/** The "Use" in "Use X on Y", if overrideUseSyntax = True */
-		public HotspotPrefix hotspotPrefix1 = new HotspotPrefix ("Use");
+		//public HotspotPrefix hotspotPrefix1 = new HotspotPrefix ("Use");
 		/** The "on" on "Use X on Y", if overrideUseSyntax = True */
-		public HotspotPrefix hotspotPrefix2 = new HotspotPrefix ("on");
+		//public HotspotPrefix hotspotPrefix2 = new HotspotPrefix ("on");
 
 		/** The ActionListAsset to run when the item is used, if multiple interactions are disallowed */
-		public ActionListAsset useActionList;
+		//public ActionListAsset useActionList;
 		/** The ActionListAsset to run when the item is examined, if multiple interactions are disallowed */
-		public ActionListAsset lookActionList;
+		//public ActionListAsset lookActionList;
 		/** A List of all "Use" InvInteraction objects associated with the item */
-		public List<InvInteraction> interactions = new List<InvInteraction>();
+		//public List<InvInteraction> interactions = new List<InvInteraction>();
 		/** A List of all "Combine" InvInteraction objects associated with the item */
-		public List<ActionListAsset> combineActionList = new List<ActionListAsset>();
+		//public List<ActionListAsset> combineActionList = new List<ActionListAsset>();
 		/** A List of InvItem ID numbers associated with the InvInteraction objects in combineActionList */
 		public List<int> combineID = new List<int>();
 		/** The ActionListAsset to run when using the item on a Hotspot is unhandled */
-		public ActionListAsset unhandledActionList;
+		//public ActionListAsset unhandledActionList;
 		/** The ActionListAsset to run when using the item on another InvItem is unhandled */
-		public ActionListAsset unhandledCombineActionList;
+		//public ActionListAsset unhandledCombineActionList;
 
 
 		/**
 		 * <summary>The default Constructor.</summary>
 		 * <param name = "idArray">An array of already-used ID numbers, so that a unique ID number can be assigned</param>
 		 */
+		/*
 		public InvItem (int[] idArray)
 		{
 			count = 0;
@@ -116,13 +117,14 @@ namespace AC
 
 			label = "Inventory item " + (id + 1).ToString ();
 			altLabel = "";
-		}
+		}*/
 		
 
 		/**
 		 * <summary>A Constructor that sets all it's values by copying another InvItem.</summary>
 		 * <param name = "assetItem">The InvItem to copy</param>
 		 */
+		/*
 		public InvItem (InvItem assetItem)
 		{
 			count = assetItem.count;
@@ -153,7 +155,7 @@ namespace AC
 			unhandledActionList = assetItem.unhandledActionList;
 			unhandledCombineActionList = assetItem.unhandledCombineActionList;
 			combineID = assetItem.combineID;
-		}
+		}*/
 
 
 		/**
@@ -183,6 +185,7 @@ namespace AC
 		 * <param name = "languageNumber">The index of the current language, as set in SpeechManager</param>
 		 * <returns>The item's display name</returns>
 		 */
+		/*
 		public string GetLabel (int languageNumber)
 		{
 			if (languageNumber > 0)
@@ -197,7 +200,7 @@ namespace AC
 				}
 				return label;
 			}
-		}
+		}*/
 
 
 		/**
@@ -205,6 +208,7 @@ namespace AC
 		 * <param name = "i">The index number to start from</param>
 		 * <param name = "numInvInteractions">The number of relevant "combine" interactions</param>
 		 */
+		/*
 		public int GetNextInteraction (int i, int numInvInteractions)
 		{
 			if (i < interactions.Count)
@@ -226,7 +230,7 @@ namespace AC
 			}
 			
 			return (i+1);
-		}
+		}*/
 		
 
 		/**
@@ -234,6 +238,7 @@ namespace AC
 		 * <param name = "i">The index number to start from</param>
 		 * <param name = "numInvInteractions">The number of relevant "combine" interactions</param>
 		 */
+		/*
 		public int GetPreviousInteraction (int i, int numInvInteractions)
 		{
 			if (i > interactions.Count && numInvInteractions > 0)
@@ -259,13 +264,13 @@ namespace AC
 			}
 			
 			return (i-1);
-		}
+		}*/
 
-
+		/*
 		private int GetNumInteractions (int numInvInteractions)
 		{
 			return (interactions.Count + numInvInteractions);
-		}
+		}*/
 
 	}
 
