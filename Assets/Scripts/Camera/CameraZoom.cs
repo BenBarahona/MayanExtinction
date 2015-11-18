@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class CameraZoom : MonoBehaviour {
 	
 	public GameObject environmentTarget;
-	public float transitionSpeed;
 	//public GameObject cameraObj;
 
 	ObjectProperties targetProperties;
@@ -180,7 +179,7 @@ public class CameraZoom : MonoBehaviour {
 
 				if(isTransition)
 				{
-					mainCamera.SetGameCamera(targetProperties.customCamera, transitionSpeed);
+					mainCamera.SetGameCamera(targetProperties.customCamera, targetProperties.transitionTime);
 					//Setting vars for zoom lerp
 					//zoomStartTime = Time.time;
 					//zoomStartPos = transform.localPosition;
@@ -229,11 +228,15 @@ public class CameraZoom : MonoBehaviour {
 	}
 
 	private bool isOverUI(){
-		if (Input.touchCount > 0) {
-			int pointerID = Input.touches [0].fingerId;
-			return UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject (pointerID);
+		if (UnityEngine.EventSystems.EventSystem.current) {
+			if (Input.touchCount > 0) {
+				int pointerID = Input.touches [0].fingerId;
+				return UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject (pointerID);
+			} else {
+				return UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ();
+			}
 		} else {
-			return UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ();
+			return false;
 		}
 	}
 

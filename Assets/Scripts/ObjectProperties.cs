@@ -9,6 +9,8 @@ public class ObjectProperties : MonoBehaviour {
 
 	public CustomCameraScript customCamera;
 
+	public float transitionTime = 1f;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -23,6 +25,7 @@ public class ObjectProperties : MonoBehaviour {
 	{
 
 		this.customCamera = newProp.customCamera;
+		this.transitionTime = newProp.transitionTime;
 
 		float offsetHorizontal = 0.0f;
 		float offsetVertical = 0.0f;
@@ -30,7 +33,5 @@ public class ObjectProperties : MonoBehaviour {
 			offsetHorizontal = newTarget.parent.eulerAngles.y;
 			offsetVertical = newTarget.parent.eulerAngles.x;
 		}
-
-		this.customCamera = newProp.customCamera;
 	}
 }
