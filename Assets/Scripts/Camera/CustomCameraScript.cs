@@ -41,6 +41,7 @@ public class CustomCameraScript : MonoBehaviour {
 	public float spinOffset = 0f;
 	/** The maximum spin angle, if spinLock = RotationLock.Limited */
 	public float maxSpin = 40f;
+	public float minSpin = -40f;
 	
 	/** The speed of pitch rotations */
 	public float pitchSpeed = 3f;
@@ -50,6 +51,7 @@ public class CustomCameraScript : MonoBehaviour {
 	public float pitchDeceleration = 20f;
 	/** The maximum pitch angle, if pitchLock = RotationLock.Limited */
 	public float maxPitch = 40f;
+	public float minPitch = -40f;
 	/** If True, then the pitch rotation will be reset when the camera is made active */
 	public bool resetPitchWhenSwitch = false;
 
@@ -205,7 +207,7 @@ public class CustomCameraScript : MonoBehaviour {
 			
 			if (spinLock == RotationLock.Limited)
 			{
-				spin = Mathf.Clamp (spin, -maxSpin, maxSpin);
+				spin = Mathf.Clamp (spin, minSpin, maxSpin);
 			}
 		}
 				
@@ -247,7 +249,7 @@ public class CustomCameraScript : MonoBehaviour {
 			
 			if (pitchLock == RotationLock.Limited)
 			{
-				pitch = Mathf.Clamp (pitch, -maxPitch, maxPitch);
+				pitch = Mathf.Clamp (pitch, minPitch, maxPitch);
 			}
 		}
 	
