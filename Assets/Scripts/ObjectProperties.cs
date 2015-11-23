@@ -11,6 +11,8 @@ public class ObjectProperties : MonoBehaviour {
 
 	public float transitionTime = 1f;
 
+	public bool onlyAllowChildColliders = false;
+
 	// Use this for initialization
 	void Start () {
 		
