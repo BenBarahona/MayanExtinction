@@ -26,7 +26,6 @@ public class MainCameraScript : MonoBehaviour {
 		if (GetComponent <Camera>())
 		{
 			_camera = GetComponent <Camera>();
-			Debug.Log("Camera: " + _camera.name);
 		}
 	}
 	// Update is called once per frame

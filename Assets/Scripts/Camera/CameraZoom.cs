@@ -28,9 +28,10 @@ public class CameraZoom : MonoBehaviour {
 		target = null;
 		mainCamera = this.GetComponent<MainCameraScript> ();
 		parentStack = new  Stack<GameObject> ();
-		parentStack.Push (environmentTarget);
-		
-		setNewTarget (environmentTarget, false);
+		//parentStack.Push (environmentTarget);
+
+		zoomIn (environmentTarget, false);
+		//setNewTarget (environmentTarget, false);
 	}
 	
 
@@ -84,15 +85,28 @@ public class CameraZoom : MonoBehaviour {
 				RaycastHit hit2;
 				if (Physics.Raycast (ray, out hit2)) {
 					if (hit2.collider != null && hit2.collider.gameObject != target && hit2.collider.CompareTag ("Dbl-Clickable")) {
-						setNewTarget (hit2.collider.gameObject, true);
+						if (hit2.collider != null && hit2.collider.CompareTag ("Dbl-Clickable")) {
+							Debug.Log("Hit a collider");
+							if(targetProperties.onlyAllowChildColliders){
+								Debug.Log("Only child colliders!");
+								if(hit2.collider.gameObject.transform.IsChildOf(target.transform)){
+									zoomIn(hit2.collider.gameObject, true);
+								}
+							}else{
+								Debug.Log("Any colliders");
+								zoomIn(hit2.collider.gameObject, true);
+							}
+						}//setNewTarget (hit2.collider.gameObject, true);
 					}
 				}
 			} else if (Input.GetMouseButtonDown (1) && target != environmentTarget) {
+				zoomOut();
+				/*
 				if (parentStack.Peek () == environmentTarget) {
 					setNewTarget (parentStack.Peek (), true);
 				} else {
 					setNewTarget (parentStack.Pop (), true);
-				}
+				}*/
 			}
 
 			//Reset timer when user releases mouse btn
@@ -102,18 +116,29 @@ public class CameraZoom : MonoBehaviour {
 			#endif
 
 			// For Touch devices, double click and zoom logic
-			if (!toolbox.isTransitioning()) {	
+			if (!toolbox.isTransitioning()) {
 				if (Input.touchCount == 1) {
 					Touch touch = Input.GetTouch (0);
 					Ray ray = Camera.main.ScreenPointToRay (touch.position);
 					RaycastHit hit;
 					if (touch.tapCount == 2 && Physics.Raycast (ray, out hit)) {
 						if (hit.collider != null && hit.collider.CompareTag ("Dbl-Clickable")) {
+							Debug.Log("Hit a collider");
+							if(targetProperties.onlyAllowChildColliders){
+								Debug.Log("Only child colliders!");
+								if(hit.collider.gameObject.transform.IsChildOf(target.transform)){
+									zoomIn(hit.collider.gameObject, true);
+								}
+							}else{
+								Debug.Log("Any colliders");
+								zoomIn(hit.collider.gameObject, true);
+							}
+							/*
 							if (hit.collider.gameObject == target) {
 								setNewTarget (parentStack.Pop (), true);
 							} else {
 								setNewTarget (hit.collider.gameObject, true);
-							}
+							}*/
 						}
 					}
 				} else if (Input.touchCount == 2 && target != environmentTarget) {
@@ -130,11 +155,7 @@ public class CameraZoom : MonoBehaviour {
 					
 						//Pinch (Zoom out)
 						if ((touchDelta + varianceInDistances <= 1) && (speedTouch0 > minPinchSpeed) && (speedTouch1 > minPinchSpeed)) {
-							if (parentStack.Peek () == environmentTarget) {
-								setNewTarget (parentStack.Peek (), true);
-							} else {
-								setNewTarget (parentStack.Pop (), true);
-							}
+							zoomOut();
 						}
 
 						//Pan ("Zoom in" gesture)
@@ -145,6 +166,83 @@ public class CameraZoom : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	void zoomIn(GameObject newTarget, bool isTransition){
+		if (newTarget != null) {
+			ObjectProperties newObjectProperties = newTarget.GetComponent<ObjectProperties>();
+			if(newObjectProperties != null && newObjectProperties.customCamera != null){
+				//Pushes current target to the stack
+				parentStack.Push (target);
+				//Disables current target's puzzle
+				if(target != null && targetProperties != null && targetProperties.isPuzzle) {
+					target.SendMessage("EnablePuzzle", false);
+				}
+
+				//Disabling new target collider to detect children colliders
+				setObjectColliderEnabled (newTarget, false);
+
+				//Setting new target to local var
+				target = newTarget;
+				targetProperties = newObjectProperties;
+				
+				//Setting global vars to new values
+				toolbox.currentTargetProperties.setValuesFromProperties(targetProperties, newTarget.transform);
+
+				if(isTransition)
+				{
+					mainCamera.SetGameCamera(targetProperties.customCamera, targetProperties.transitionTime);
+					
+					toolbox.beginTransition();
+				}else{
+					mainCamera.SetGameCamera(targetProperties.customCamera, 0);
+				}
+				
+				//If the gameobject has a puzzle, call method to enable
+				if(targetProperties.isPuzzle){
+					newTarget.SendMessage("EnablePuzzle", true);
+				}
+			}
+		}
+	}
+
+	void zoomOut(){
+		float transitionTime = targetProperties.transitionTime;
+		GameObject newTarget;
+		if (parentStack.Peek ().GetInstanceID () == environmentTarget.GetInstanceID ()) {
+			newTarget = parentStack.Peek ();
+		} else {
+			newTarget = parentStack.Pop();
+		}
+
+		ObjectProperties newObjectProperties = newTarget.GetComponent<ObjectProperties>();
+
+
+		//Disables current target's puzzle
+		if (target != null && targetProperties != null && targetProperties.isPuzzle) {
+			target.SendMessage ("EnablePuzzle", false);
+		}
+		//Enables current target's collider
+		setObjectColliderEnabled (target, true);
+
+		target = newTarget;
+		targetProperties = newObjectProperties;
+
+		toolbox.currentTargetProperties.setValuesFromProperties(targetProperties, newTarget.transform);
+		
+		if(transitionTime > 0)
+		{
+			mainCamera.SetGameCamera(targetProperties.customCamera, transitionTime);
+			toolbox.beginTransition();
+		}else{
+			mainCamera.SetGameCamera(targetProperties.customCamera, 0);
+		}
+		
+		//If the gameobject has a puzzle, call method to enable
+		if(targetProperties.isPuzzle){
+			newTarget.SendMessage("EnablePuzzle", true);
+		}
+
 	}
 
 	void setNewTarget(GameObject newTarget, bool isTransition)
@@ -161,9 +259,13 @@ public class CameraZoom : MonoBehaviour {
 				//enabling old target collider and parent s, as long as it is NOT a parent of the new target
 				if (target != null && !newTarget.transform.IsChildOf (target.transform)) {
 					//Second parameter is to enable just the object (false) or parents of obj too (true)
+					Debug.Log("Enabling parents!");
 					enableObjectAndParentColliders (target, !target.transform.IsChildOf (newTarget.transform));
-				} else {
-					//when newtarget is child, then add the parent obj to the stack
+					//They are brothers!
+					//if(newTarget.transform.IsChildOf(target.transform.parent)){
+						parentStack.Push(target);
+					//}
+				}else {
 					parentStack.Push (target);
 				}
 
