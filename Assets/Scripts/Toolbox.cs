@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Toolbox : Singleton<Toolbox> {
@@ -31,6 +31,7 @@ public class Toolbox : Singleton<Toolbox> {
 
 	// Touch-Screen movement
 	private Vector2 dragStartPosition = Vector2.zero;
+	private Vector2 oldDragPosition = Vector2.zero;
 	private float dragSpeed = 0f;
 	private Vector2 dragVector;
 	private float touchTime = 0f;
@@ -43,6 +44,8 @@ public class Toolbox : Singleton<Toolbox> {
 	private Vector3 dragForce;
 	private Vector2 deltaDragMouse;
 
+	private int holdTimer = 0;
+
 	void Awake () {
 		GameObject main = GameObject.Find ("/MainGameObj");
 		currentTargetProperties = main.AddComponent<ObjectProperties>();
@@ -52,7 +55,9 @@ public class Toolbox : Singleton<Toolbox> {
 	}
 
 	void Update () {
-		UpdateInput ();
+		if (!isTransitioning ()) {
+			UpdateInput ();
+		}
 	}
 
 	public void SetUpForLevelBegin()
@@ -69,6 +74,9 @@ public class Toolbox : Singleton<Toolbox> {
 		animatingZoom = true;
 		animatingHorizontal = true;
 		animatingVertical = true;
+
+		dragState = DragState.None;
+		dragVector = Vector2.zero;
 	}
 
 	public void endTransition()
@@ -260,6 +268,16 @@ public class Toolbox : Singleton<Toolbox> {
 		{
 			dragState = DragState.None;
 		}
+
+
+		if (Input.GetMouseButton (0)) {
+			holdTimer++;
+		}
+		if (Input.GetMouseButtonUp (0)) {
+			holdTimer = 0;
+		}
+
+
 		
 		if (Input.GetMouseButtonDown (0))
 		{
@@ -272,8 +290,12 @@ public class Toolbox : Singleton<Toolbox> {
 				}
 				else if (CanClick ())
 				{
+					/*
+					if(holdTimer == 0){
+						dragVector = Vector2.zero;
+					}*/
 					dragStartPosition = GetInvertedMouse ();
-					
+
 					mouseState = MouseState.SingleClick;
 					ResetClick ();
 					ResetDoubleClick ();
@@ -300,6 +322,13 @@ public class Toolbox : Singleton<Toolbox> {
 		SetDoubleClickState ();
 
 		mousePosition = Input.mousePosition;
+		/*
+		if (Input.touchCount > 0) {
+			Touch t = Input.GetTouch (0);
+			if (t.phase == TouchPhase.Moved && Input.touchCount == 1){
+				mousePosition += t.deltaPosition * Time.deltaTime / t.deltaTime;
+			}
+		}*/
 
 		if (mouseState == MouseState.Normal && !hasUnclickedSinceClick)
 		{

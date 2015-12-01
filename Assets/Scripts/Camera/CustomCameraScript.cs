@@ -169,14 +169,16 @@ public class CustomCameraScript : MonoBehaviour {
 		{
 			inputMovement = Vector2.zero;
 		}
-				
+
+		inputMovement =  inputMovement * 0.3f;
+		Debug.Log("Input movement " + inputMovement);
 		if (spinLock != RotationLock.Locked)
 		{
-			if (inputMovement.x > 0f)
+			if (inputMovement.x > 60f)
 			{
 				deltaSpin = Mathf.Lerp (deltaSpin, spinSpeed, spinAccleration * Time.deltaTime * inputMovement.x);
 			}
-			else if (inputMovement.x < 0f)
+			else if (inputMovement.x < -60f)
 			{
 				deltaSpin = Mathf.Lerp (deltaSpin, -spinSpeed, spinAccleration * Time.deltaTime * -inputMovement.x);
 			}
@@ -214,11 +216,11 @@ public class CustomCameraScript : MonoBehaviour {
 				
 		if (pitchLock != RotationLock.Locked)
 		{
-			if (inputMovement.y > 0f)
+			if (inputMovement.y > 60f)
 			{
 				deltaPitch = Mathf.Lerp (deltaPitch, pitchSpeed, pitchAccleration * Time.deltaTime * inputMovement.y);
 			}
-			else if (inputMovement.y < 0f)
+			else if (inputMovement.y < -60f)
 			{
 				deltaPitch = Mathf.Lerp (deltaPitch, -pitchSpeed, pitchAccleration * Time.deltaTime * -inputMovement.y);
 			}
@@ -268,7 +270,7 @@ public class CustomCameraScript : MonoBehaviour {
 		if (pitchLock != RotationLock.Locked)
 		{
 			finalPitch += target.eulerAngles.x;
-		}
+		} 
 		
 		Quaternion rotation = Quaternion.Euler (finalPitch, finalSpin, roll);
 		targetRotation = rotation;

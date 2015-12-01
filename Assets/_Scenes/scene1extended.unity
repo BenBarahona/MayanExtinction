@@ -753,15 +753,15 @@ MonoBehaviour:
   collisionOffset: 0
   minDistance: 1
   maxDistance: 3
-  spinSpeed: 2
-  spinAccleration: 2
+  spinSpeed: 1
+  spinAccleration: .5
   spinDeceleration: 2
   resetSpinWhenSwitch: 1
   spinOffset: 0
   maxSpin: 40
   minSpin: -40
-  pitchSpeed: 2
-  pitchAccleration: 2
+  pitchSpeed: .5
+  pitchAccleration: .5
   pitchDeceleration: 2
   maxPitch: 30
   minPitch: 10
@@ -1269,6 +1269,22 @@ Prefab:
       propertyPath: m_Name
       value: Floor_Tiles_4m (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
   m_IsPrefabParent: 0
@@ -1735,6 +1751,18 @@ Prefab:
     - target: {fileID: 100006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
       propertyPath: m_Name
       value: Wall_4m (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
@@ -4197,7 +4225,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &215330968
 Transform:
   m_ObjectHideFlags: 0
@@ -6909,6 +6937,18 @@ Prefab:
     - target: {fileID: 100006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
       propertyPath: m_Name
       value: Wall_4m (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
@@ -13097,6 +13137,18 @@ Prefab:
       propertyPath: m_Name
       value: Wall_4m (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
   m_IsPrefabParent: 0
@@ -13935,7 +13987,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &428714787
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19380,6 +19432,18 @@ Prefab:
       propertyPath: m_Name
       value: Wall_4m (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
   m_IsPrefabParent: 0
@@ -23000,6 +23064,18 @@ Prefab:
       propertyPath: m_Name
       value: Wall_4m (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
   m_IsPrefabParent: 0
@@ -24409,6 +24485,22 @@ Prefab:
       propertyPath: m_Name
       value: Floor_Tiles_4m (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
   m_IsPrefabParent: 0
@@ -25703,6 +25795,18 @@ Prefab:
       propertyPath: m_Name
       value: Wall_4m (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
   m_IsPrefabParent: 0
@@ -26568,6 +26672,22 @@ Prefab:
     - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
       propertyPath: m_Name
       value: Floor_Tiles_4m (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
@@ -28165,6 +28285,18 @@ Prefab:
       propertyPath: m_Name
       value: Wall_4m (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
   m_IsPrefabParent: 0
@@ -28786,6 +28918,18 @@ Prefab:
     - target: {fileID: 100006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
       propertyPath: m_Name
       value: Wall_4m (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
@@ -29418,6 +29562,22 @@ Prefab:
     - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
       propertyPath: m_Name
       value: Floor_Tiles_4m (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
@@ -34035,6 +34195,18 @@ Prefab:
       propertyPath: m_Name
       value: Wall_4m (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
   m_IsPrefabParent: 0
@@ -34189,6 +34361,22 @@ Prefab:
     - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
       propertyPath: m_Name
       value: Floor_Tiles_4m (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
@@ -34424,16 +34612,16 @@ MonoBehaviour:
   collisionOffset: 0
   minDistance: 1
   maxDistance: 3
-  spinSpeed: 2
-  spinAccleration: 2
-  spinDeceleration: 2
+  spinSpeed: 1
+  spinAccleration: 1
+  spinDeceleration: 1
   resetSpinWhenSwitch: 1
   spinOffset: 0
   maxSpin: 300
   minSpin: 250
-  pitchSpeed: 3
-  pitchAccleration: 20
-  pitchDeceleration: 20
+  pitchSpeed: 1
+  pitchAccleration: 1
+  pitchDeceleration: 1
   maxPitch: 10
   minPitch: -10
   resetPitchWhenSwitch: 1
@@ -34512,7 +34700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1156555590
 Transform:
   m_ObjectHideFlags: 0
@@ -34838,7 +35026,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1198411216
 Transform:
   m_ObjectHideFlags: 0
@@ -36571,6 +36759,22 @@ Prefab:
       propertyPath: m_Name
       value: Floor_Tiles_4m (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
   m_IsPrefabParent: 0
@@ -36850,6 +37054,22 @@ Prefab:
       propertyPath: m_Name
       value: Floor_Tiles_4m (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
   m_IsPrefabParent: 0
@@ -36907,6 +37127,18 @@ Prefab:
     - target: {fileID: 400006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
       propertyPath: m_LocalScale.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
@@ -39693,7 +39925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1392161579
 Transform:
   m_ObjectHideFlags: 0
@@ -40665,6 +40897,22 @@ Prefab:
       propertyPath: m_Name
       value: Floor_Tiles_4m (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
   m_IsPrefabParent: 0
@@ -40909,6 +41157,22 @@ Prefab:
     - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
       propertyPath: m_Name
       value: Floor_Tiles_4m (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
@@ -42994,7 +43258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1565481930
 Transform:
   m_ObjectHideFlags: 0
@@ -43383,6 +43647,22 @@ Prefab:
     - target: {fileID: 400000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
       propertyPath: m_LocalScale.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
@@ -44270,6 +44550,22 @@ Prefab:
       propertyPath: m_Name
       value: Floor_Tiles_4m (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
   m_IsPrefabParent: 0
@@ -44381,6 +44677,18 @@ Prefab:
     - target: {fileID: 100006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
       propertyPath: m_Name
       value: Wall_4m (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
@@ -44651,6 +44959,22 @@ Prefab:
     - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
       propertyPath: m_Name
       value: Floor_Tiles_4m (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
@@ -45107,6 +45431,22 @@ Prefab:
     - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
       propertyPath: m_Name
       value: Floor_Tiles_4m (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
@@ -46182,6 +46522,26 @@ Prefab:
     - target: {fileID: 163538, guid: a9fd7e04c194c414cb26f3433de46709, type: 2}
       propertyPath: m_TagString
       value: Dbl-Clickable
+      objectReference: {fileID: 0}
+    - target: {fileID: 134762, guid: a9fd7e04c194c414cb26f3433de46709, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 165036, guid: a9fd7e04c194c414cb26f3433de46709, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 188168, guid: a9fd7e04c194c414cb26f3433de46709, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 117506, guid: a9fd7e04c194c414cb26f3433de46709, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 163538, guid: a9fd7e04c194c414cb26f3433de46709, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9fd7e04c194c414cb26f3433de46709, type: 2}
@@ -47642,16 +48002,16 @@ MonoBehaviour:
   collisionOffset: 0
   minDistance: 1
   maxDistance: 3
-  spinSpeed: 2
-  spinAccleration: 2
-  spinDeceleration: 2
+  spinSpeed: 1
+  spinAccleration: 1
+  spinDeceleration: 1
   resetSpinWhenSwitch: 1
   spinOffset: 0
   maxSpin: 275
   minSpin: 265
-  pitchSpeed: 3
-  pitchAccleration: 20
-  pitchDeceleration: 20
+  pitchSpeed: 1
+  pitchAccleration: 1
+  pitchDeceleration: 1
   maxPitch: 5
   minPitch: -5
   resetPitchWhenSwitch: 1
@@ -47757,16 +48117,16 @@ MonoBehaviour:
   collisionOffset: 0
   minDistance: 1
   maxDistance: 3
-  spinSpeed: 2
-  spinAccleration: 2
-  spinDeceleration: 2
+  spinSpeed: 1
+  spinAccleration: 1
+  spinDeceleration: 1
   resetSpinWhenSwitch: 1
   spinOffset: 0
   maxSpin: 300
   minSpin: 250
-  pitchSpeed: 3
-  pitchAccleration: 20
-  pitchDeceleration: 20
+  pitchSpeed: 1
+  pitchAccleration: 1
+  pitchDeceleration: 1
   maxPitch: 10
   minPitch: -10
   resetPitchWhenSwitch: 1
@@ -48538,6 +48898,22 @@ Prefab:
     - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
       propertyPath: m_Name
       value: Floor_Tiles_4m (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
@@ -49320,7 +49696,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1910547796
 Transform:
   m_ObjectHideFlags: 0
@@ -51194,6 +51570,22 @@ Prefab:
       propertyPath: m_Name
       value: Floor_Tiles_4m (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
   m_IsPrefabParent: 0
@@ -52479,7 +52871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2018827601
 Transform:
   m_ObjectHideFlags: 0
@@ -52641,6 +53033,22 @@ Prefab:
       propertyPath: m_Name
       value: Floor_Tiles_4m (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
   m_IsPrefabParent: 0
@@ -52764,6 +53172,18 @@ Prefab:
     - target: {fileID: 100006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
       propertyPath: m_Name
       value: Wall_4m (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
@@ -53022,6 +53442,22 @@ Prefab:
       propertyPath: m_Name
       value: Floor_Tiles_4m (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
   m_IsPrefabParent: 0
@@ -53095,6 +53531,22 @@ Prefab:
     - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
       propertyPath: m_Name
       value: Floor_Tiles_4m (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
@@ -53578,6 +54030,22 @@ Prefab:
       propertyPath: m_Name
       value: Floor_Tiles_4m (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
   m_IsPrefabParent: 0
@@ -53969,6 +54437,18 @@ Prefab:
     - target: {fileID: 100006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
       propertyPath: m_Name
       value: Wall_4m (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70070eda8a059254db7cfc5ea2b6a198, type: 3}
@@ -54372,6 +54852,22 @@ Prefab:
     - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
       propertyPath: m_Name
       value: Floor_Tiles_4m (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83d70fa2f3290f843bfaa9d4878dc0d1, type: 3}

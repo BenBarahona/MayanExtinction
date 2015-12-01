@@ -86,14 +86,11 @@ public class CameraZoom : MonoBehaviour {
 				if (Physics.Raycast (ray, out hit2)) {
 					if (hit2.collider != null && hit2.collider.gameObject != target && hit2.collider.CompareTag ("Dbl-Clickable")) {
 						if (hit2.collider != null && hit2.collider.CompareTag ("Dbl-Clickable")) {
-							Debug.Log("Hit a collider");
 							if(targetProperties.onlyAllowChildColliders){
-								Debug.Log("Only child colliders!");
 								if(hit2.collider.gameObject.transform.IsChildOf(target.transform)){
 									zoomIn(hit2.collider.gameObject, true);
 								}
 							}else{
-								Debug.Log("Any colliders");
 								zoomIn(hit2.collider.gameObject, true);
 							}
 						}//setNewTarget (hit2.collider.gameObject, true);
