@@ -169,9 +169,11 @@ public class CustomCameraScript : MonoBehaviour {
 			return;
 		}
 
-		if (Toolbox.Instance.GetDragState () == DragState._Camera && !Toolbox.Instance.isTransitioning())
+		TouchManager touchManager = Toolbox.Instance.touchManager;
+
+		if (touchManager.GetDragState () == DragState._Camera && !Toolbox.Instance.isTransitioning())
 		{
-			inputMovement = Toolbox.Instance.GetDragVector ();
+			inputMovement = touchManager.GetDragVector ();
 		}
 		else
 		{

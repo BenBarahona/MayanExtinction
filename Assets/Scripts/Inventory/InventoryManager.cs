@@ -40,7 +40,7 @@ public class InventoryManager : MonoBehaviour {
 		for(int i = 0; i < inventorySlots; i++)
 		{
 			GameObject btn = (GameObject)Instantiate (buttonPrefab, position, Quaternion.identity);
-			btn.transform.parent = transform;
+			btn.transform.SetParent(transform);
 
 			InvSlot slot = new InvSlot(i + 1, btn);
 			slots.Add(slot);
