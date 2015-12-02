@@ -179,6 +179,10 @@ public class CameraZoom : MonoBehaviour {
 				//Disabling new target collider to detect children colliders
 				setObjectColliderEnabled (newTarget, false);
 
+				if(target){
+					target.SendMessage("beganCameraTransition", SendMessageOptions.DontRequireReceiver);
+				}
+
 				//Setting new target to local var
 				target = newTarget;
 				targetProperties = newObjectProperties;
@@ -221,6 +225,10 @@ public class CameraZoom : MonoBehaviour {
 		}
 		//Enables current target's collider
 		setObjectColliderEnabled (target, true);
+
+		if(target){
+			target.SendMessage("beganCameraTransition", SendMessageOptions.DontRequireReceiver);
+		}
 
 		target = newTarget;
 		targetProperties = newObjectProperties;

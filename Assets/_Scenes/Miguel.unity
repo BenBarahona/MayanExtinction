@@ -767,6 +767,7 @@ MonoBehaviour:
   minPitch: 10
   resetPitchWhenSwitch: 1
   CameraIsFixed: 0
+  sensitivity: .5
 --- !u!92 &53255365
 Behaviour:
   m_ObjectHideFlags: 0
@@ -3909,6 +3910,7 @@ MonoBehaviour:
   minPitch: -40
   resetPitchWhenSwitch: 0
   CameraIsFixed: 0
+  sensitivity: 1
 --- !u!92 &203755957
 Behaviour:
   m_ObjectHideFlags: 0
@@ -34626,6 +34628,7 @@ MonoBehaviour:
   minPitch: -10
   resetPitchWhenSwitch: 1
   CameraIsFixed: 0
+  sensitivity: 2
 --- !u!92 &1153199984
 Behaviour:
   m_ObjectHideFlags: 0
@@ -48016,6 +48019,7 @@ MonoBehaviour:
   minPitch: -5
   resetPitchWhenSwitch: 1
   CameraIsFixed: 0
+  sensitivity: 2
 --- !u!92 &1778548061
 Behaviour:
   m_ObjectHideFlags: 0
@@ -48131,6 +48135,7 @@ MonoBehaviour:
   minPitch: -10
   resetPitchWhenSwitch: 1
   CameraIsFixed: 0
+  sensitivity: 2
 --- !u!92 &1778776318
 Behaviour:
   m_ObjectHideFlags: 0

@@ -56,6 +56,8 @@ public class CustomCameraScript : MonoBehaviour {
 	public bool resetPitchWhenSwitch = false;
 
 	public bool CameraIsFixed = false;
+
+	public float sensitivity = 1;
 	
 	private float actualCollisionOffset = 0f;
 	
@@ -118,11 +120,11 @@ public class CustomCameraScript : MonoBehaviour {
 		{
 			spin = initialSpin;
 		}
-		/*
+
 		if (!CameraIsFixed) {
 			UpdateTargets ();
 			SnapMovement ();
-		}*/
+		}
 	}
 
 	private void DetectCollisions ()
@@ -150,13 +152,6 @@ public class CustomCameraScript : MonoBehaviour {
 		UpdateTargets ();
 		DetectCollisions ();
 
-		/*
-		if (Toolbox.Instance.isTransitioning ()) {
-			targetRotation = transform.rotation;
-			targetPosition = transform.position;
-			return;
-		}*/
-
 		transform.rotation = Quaternion.Lerp (transform.rotation, targetRotation, Time.deltaTime * 10f);
 
 		transform.position = Vector3.Lerp (transform.position, targetPosition - (targetPosition - centrePosition).normalized * actualCollisionOffset, Time.deltaTime * 10f);
@@ -181,11 +176,11 @@ public class CustomCameraScript : MonoBehaviour {
 		inputMovement =  inputMovement * 0.3f;
 		if (spinLock != RotationLock.Locked)
 		{
-			if (inputMovement.x > 60f)
+			if (inputMovement.x > 60f/sensitivity)
 			{
 				deltaSpin = Mathf.Lerp (deltaSpin, spinSpeed, spinAccleration * Time.deltaTime * inputMovement.x);
 			}
-			else if (inputMovement.x < -60f)
+			else if (inputMovement.x < -60f/sensitivity)
 			{
 				deltaSpin = Mathf.Lerp (deltaSpin, -spinSpeed, spinAccleration * Time.deltaTime * -inputMovement.x);
 			}
@@ -223,11 +218,11 @@ public class CustomCameraScript : MonoBehaviour {
 				
 		if (pitchLock != RotationLock.Locked)
 		{
-			if (inputMovement.y > 60f)
+			if (inputMovement.y > 60f/sensitivity)
 			{
 				deltaPitch = Mathf.Lerp (deltaPitch, pitchSpeed, pitchAccleration * Time.deltaTime * inputMovement.y);
 			}
-			else if (inputMovement.y < -60f)
+			else if (inputMovement.y < -60f/sensitivity)
 			{
 				deltaPitch = Mathf.Lerp (deltaPitch, -pitchSpeed, pitchAccleration * Time.deltaTime * -inputMovement.y);
 			}
@@ -284,5 +279,11 @@ public class CustomCameraScript : MonoBehaviour {
 		
 		centrePosition = target.position + (Vector3.up * verticalOffset) + (rotation * Vector3.right * horizontalOffset);
 		targetPosition = centrePosition - (rotation * Vector3.forward * distance);
+	}
+
+	public void beganCameraTransition()
+	{
+		targetRotation = transform.rotation;
+		targetPosition = transform.position;
 	}
 }
