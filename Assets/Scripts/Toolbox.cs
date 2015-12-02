@@ -287,7 +287,7 @@ public class Toolbox : Singleton<Toolbox> {
 		}
 
 
-		
+		//First time click
 		if (Input.GetMouseButtonDown (0))
 		{
 			if (mouseState == MouseState.Normal)
@@ -311,11 +311,13 @@ public class Toolbox : Singleton<Toolbox> {
 				}
 			}
 		}
+		//Continous click (hold down)
 		else if (Input.GetMouseButton (0))
 		{
 			mouseState = MouseState.HeldDown;
 			SetDragState ();
 		}
+		//Release click
 		else
 		{
 			if (mouseState == MouseState.HeldDown && dragState == DragState.None && CanClick ())
