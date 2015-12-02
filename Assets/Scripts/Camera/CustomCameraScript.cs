@@ -163,6 +163,9 @@ public class CustomCameraScript : MonoBehaviour {
 		{
 			return;
 		}
+		if (sensitivity == 0) {
+			sensitivity = 1;
+		}
 
 		TouchManager touchManager = Toolbox.Instance.touchManager;
 
