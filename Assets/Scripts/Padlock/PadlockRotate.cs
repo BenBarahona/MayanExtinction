@@ -18,7 +18,7 @@ public class PadlockRotate : MonoBehaviour {
 	float timeStartedLocking;
 	
 	// Use this for initialization
-	new void Start () {
+	void Start () {
 		mouseDownFlag = false;
 		rotationAmount = 0.0f;
 		rotation = new Vector3(0f,0f,90f);
