@@ -7,17 +7,22 @@ public class Toolbox : Singleton<Toolbox> {
 
 	public ObjectProperties currentTargetProperties;
 
+	public TouchManager touchManager;
+	public InventoryManager inventoryManager;
+
 	public bool animatingZoom;
 	public bool animatingHorizontal;
 	public bool animatingVertical;
 	public Puzzle currentPuzzle;
-	
+
+	/* TODO: Delete later
+	 * 
 	private MouseState mouseState = MouseState.Normal;
 	private DragState dragState = DragState.None;
 
-	/** The minimum duration, in seconds, that can elapse between mouse clicks */
+	// The minimum duration, in seconds, that can elapse between mouse clicks
 	public float clickDelay = 0.1f;
-	/**<The maximum duration, in seconds, between two successive mouse clicks to register a "double-click" */
+	// <The maximum duration, in seconds, between two successive mouse clicks to register a "double-click"
 	public float doubleClickDelay = 0.2f;
 	
 	private float clickTime = 0f;
@@ -26,7 +31,6 @@ public class Toolbox : Singleton<Toolbox> {
 	private bool lastClickWasDouble = false;
 
 	// Controller movement
-
 	private Vector2 mousePosition;
 
 	// Touch-Screen movement
@@ -45,19 +49,19 @@ public class Toolbox : Singleton<Toolbox> {
 	private Vector2 deltaDragMouse;
 
 	private int holdTimer = 0;
+	*/
 
 	void Awake () {
-		GameObject main = GameObject.Find ("/MainGameObj");
-		currentTargetProperties = main.AddComponent<ObjectProperties>();
+		//GameObject main = GameObject.Find ("/MainGameObj");
 		//scene = main.GetComponent <TutorialSceneScript>();
+		currentTargetProperties = gameObject.AddComponent<ObjectProperties>();
+		touchManager = gameObject.AddComponent<TouchManager>();
 
 		animatingZoom = animatingHorizontal = animatingVertical = false;
 	}
 
 	void Update () {
-		if (!isTransitioning ()) {
-			UpdateInput ();
-		}
+
 	}
 
 	public void SetUpForLevelBegin()
@@ -75,11 +79,7 @@ public class Toolbox : Singleton<Toolbox> {
 		animatingHorizontal = true;
 		animatingVertical = true;
 
-		mouseState = MouseState.Normal;
-		dragState = DragState.None;
-		dragVector = Vector2.zero;
-		ResetClick ();
-		ResetDoubleClick ();
+		touchManager.ResetForTransition ();
 	}
 
 	public void endTransition()
@@ -88,11 +88,7 @@ public class Toolbox : Singleton<Toolbox> {
 		animatingHorizontal = false;
 		animatingVertical = false;
 
-		mouseState = MouseState.Normal;
-		dragState = DragState.None;
-		dragVector = Vector2.zero;
-		ResetClick ();
-		ResetDoubleClick ();
+		touchManager.ResetForTransition ();
 	}
 	
 	public bool isTransitioning()
@@ -206,7 +202,7 @@ public class Toolbox : Singleton<Toolbox> {
 		}
 		return ((Time.time - startT) / deltaT);
 	}
-
+	/*
 	private void UpdateDrag ()
 	{
 		// Calculate change in mouse position
@@ -239,10 +235,8 @@ public class Toolbox : Singleton<Toolbox> {
 		}
 	}
 
-	/**
-		 * <summary>Gets the y-inverted cursor position. This is useful because Menu Rects are drawn upwards, while screen space is measured downwards.</summary>
-		 * <returns>Gets the y-inverted cursor position. This is useful because Menu Rects are drawn upwards, while screen space is measured downwards.</returns>
-		 */
+	// <summary>Gets the y-inverted cursor position. This is useful because Menu Rects are drawn upwards, while screen space is measured downwards.</summary>
+	// <returns>Gets the y-inverted cursor position. This is useful because Menu Rects are drawn upwards, while screen space is measured downwards.</returns>
 	public Vector2 GetInvertedMouse ()
 	{
 		return new Vector2 (GetMousePosition ().x, Screen.height - GetMousePosition ().y);
@@ -287,7 +281,7 @@ public class Toolbox : Singleton<Toolbox> {
 		}
 
 
-		
+		//First time click
 		if (Input.GetMouseButtonDown (0))
 		{
 			if (mouseState == MouseState.Normal)
@@ -302,7 +296,8 @@ public class Toolbox : Singleton<Toolbox> {
 					/*
 					if(holdTimer == 0){
 						dragVector = Vector2.zero;
-					}*/
+					} * /
+					
 					dragStartPosition = GetInvertedMouse ();
 
 					mouseState = MouseState.SingleClick;
@@ -311,11 +306,13 @@ public class Toolbox : Singleton<Toolbox> {
 				}
 			}
 		}
+		//Continous click (hold down)
 		else if (Input.GetMouseButton (0))
 		{
 			mouseState = MouseState.HeldDown;
 			SetDragState ();
 		}
+		//Release click
 		else
 		{
 			if (mouseState == MouseState.HeldDown && dragState == DragState.None && CanClick ())
@@ -337,7 +334,7 @@ public class Toolbox : Singleton<Toolbox> {
 			if (t.phase == TouchPhase.Moved && Input.touchCount == 1){
 				mousePosition += t.deltaPosition * Time.deltaTime / t.deltaTime;
 			}
-		}*/
+		}* /
 
 		if (mouseState == MouseState.Normal && !hasUnclickedSinceClick)
 		{
@@ -376,9 +373,7 @@ public class Toolbox : Singleton<Toolbox> {
 		return false;
 	}
 
-	/**
-		 * Records the current click time, so that another click will not register for the duration of clickDelay.
-		 */
+	//Records the current click time, so that another click will not register for the duration of clickDelay.
 	public void ResetClick ()
 	{
 		clickTime = clickDelay;
@@ -391,23 +386,14 @@ public class Toolbox : Singleton<Toolbox> {
 		doubleClickTime = doubleClickDelay;
 	}
 
-	/**
-		 * <summary>Checks if a mouse click will be registered.</summary>
-		 * <returns>True if a mouse click will be registered</returns>
-		 */
+	//<summary>Checks if a mouse click will be registered.</summary>
+	//<returns>True if a mouse click will be registered</returns>
 	public bool CanClick ()
 	{
-		if (clickTime == 0f)
-		{
-			return true;
-		}
-		
-		return false;
+		return clickTime == 0f;
 	}
 
-	/**
-		 * Resets the mouse click so that nothing else will be affected by it this frame.
-		 */
+	//Resets the mouse click so that nothing else will be affected by it this frame.
 	public void ResetMouseClick ()
 	{
 		mouseState = MouseState.Normal;
@@ -424,5 +410,5 @@ public class Toolbox : Singleton<Toolbox> {
 			lastClickWasDouble = false;
 		}
 	}
-
+	*/
 }

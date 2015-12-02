@@ -8,7 +8,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 439182}
-  - 114: {fileID: 11449690}
   - 65: {fileID: 6595810}
   - 114: {fileID: 11426758}
   m_Layer: 0
@@ -57,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 204.300003, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 421048}
@@ -82,8 +81,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .5, y: .5, z: .5}
+  m_LocalPosition: {x: 25.5599995, y: 8.02999973, z: 33.7299995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 421048}
   m_Father: {fileID: 0}
@@ -143,30 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: ba21f3e24f5c748a68307ea0356b7b93, type: 3}
-  pickupName: 47656d
+  pickupName: gem
   placedCorrectly: 0
---- !u!114 &11449690
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fd998e0c43c54154bc8160a4816d375, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  limitLeft: 0
-  limitRight: 0
-  limitTop: 0
-  limitBottom: 0
-  maxTilt: 0
-  minTilt: 0
-  distance: 5
-  state: 0
-  defaultHorizontalValue: 0
-  defaultVerticalValue: 0
-  isPuzzle: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -218,6 +195,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
       value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
