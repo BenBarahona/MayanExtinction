@@ -75,8 +75,11 @@ public class Toolbox : Singleton<Toolbox> {
 		animatingHorizontal = true;
 		animatingVertical = true;
 
+		mouseState = MouseState.Normal;
 		dragState = DragState.None;
 		dragVector = Vector2.zero;
+		ResetClick ();
+		ResetDoubleClick ();
 	}
 
 	public void endTransition()
@@ -84,6 +87,12 @@ public class Toolbox : Singleton<Toolbox> {
 		animatingZoom = false;
 		animatingHorizontal = false;
 		animatingVertical = false;
+
+		mouseState = MouseState.Normal;
+		dragState = DragState.None;
+		dragVector = Vector2.zero;
+		ResetClick ();
+		ResetDoubleClick ();
 	}
 	
 	public bool isTransitioning()

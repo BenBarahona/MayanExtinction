@@ -118,10 +118,11 @@ public class CustomCameraScript : MonoBehaviour {
 		{
 			spin = initialSpin;
 		}
+		/*
 		if (!CameraIsFixed) {
 			UpdateTargets ();
 			SnapMovement ();
-		}
+		}*/
 	}
 
 	private void DetectCollisions ()
@@ -149,6 +150,13 @@ public class CustomCameraScript : MonoBehaviour {
 		UpdateTargets ();
 		DetectCollisions ();
 
+		/*
+		if (Toolbox.Instance.isTransitioning ()) {
+			targetRotation = transform.rotation;
+			targetPosition = transform.position;
+			return;
+		}*/
+
 		transform.rotation = Quaternion.Lerp (transform.rotation, targetRotation, Time.deltaTime * 10f);
 
 		transform.position = Vector3.Lerp (transform.position, targetPosition - (targetPosition - centrePosition).normalized * actualCollisionOffset, Time.deltaTime * 10f);
@@ -171,7 +179,6 @@ public class CustomCameraScript : MonoBehaviour {
 		}
 
 		inputMovement =  inputMovement * 0.3f;
-		Debug.Log("Input movement " + inputMovement);
 		if (spinLock != RotationLock.Locked)
 		{
 			if (inputMovement.x > 60f)
