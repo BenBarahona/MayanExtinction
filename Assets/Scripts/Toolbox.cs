@@ -26,9 +26,6 @@ public class Toolbox : Singleton<Toolbox> {
 	}
 
 	void Update () {
-		currentTargetProperties = gameObject.AddComponent<ObjectProperties>();
-		touchManager = gameObject.AddComponent<TouchManager>();
-		inventoryManager = GameObject.Find ("/Canvas").GetComponent<InventoryManager> ();
 		
 		animatingZoom = animatingHorizontal = animatingVertical = false;
 	}
