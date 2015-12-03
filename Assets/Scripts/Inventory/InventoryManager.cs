@@ -53,17 +53,12 @@ public class InventoryManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-		if(Input.touchCount > 0){
-			ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-		}
-		RaycastHit hit;
-		if (Physics.Raycast (ray, out hit)) {
-			if(hit.collider.CompareTag("Pickup"))
-			{
 
-			}
-		}
+	}
+
+	public void PickUpGameObject(GameObject gameObject)
+	{
+		Debug.Log ("Pickup: " + gameObject.name);
 	}
 
 	void AddItemToSlot(InvItem item, InvSlot slot)
