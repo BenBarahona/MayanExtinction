@@ -10,5 +10,6 @@ public enum RotationLock {Free, Locked, Limited };
 
 public enum MouseState { Normal, SingleClick, RightClick, DoubleClick, HeldDown, LetGo };
 public enum DragState { None, Inventory, _Camera };
+public enum GameState {Paused, Resumed, Inventory}
 
 

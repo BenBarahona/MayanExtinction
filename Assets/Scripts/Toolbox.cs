@@ -10,6 +10,8 @@ public class Toolbox : Singleton<Toolbox> {
 	public TouchManager touchManager;
 	public InventoryManager inventoryManager;
 
+	public GameState gameState;
+
 	public bool animatingZoom;
 	public bool animatingHorizontal;
 	public bool animatingVertical;
@@ -20,9 +22,11 @@ public class Toolbox : Singleton<Toolbox> {
 		//scene = main.GetComponent <TutorialSceneScript>();
 		currentTargetProperties = gameObject.AddComponent<ObjectProperties>();
 		touchManager = gameObject.AddComponent<TouchManager>();
-		inventoryManager = GameObject.Find ("/Canvas").GetComponent<InventoryManager> ();
+		inventoryManager = GameObject.Find ("/Inventory").GetComponent<InventoryManager> ();
 
 		animatingZoom = animatingHorizontal = animatingVertical = false;
+
+		gameState = GameState.Resumed;
 	}
 
 	void Update () {
@@ -40,6 +44,8 @@ public class Toolbox : Singleton<Toolbox> {
 		inventoryManager = GameObject.Find ("/Canvas").GetComponent<InventoryManager> ();
 		
 		animatingZoom = animatingHorizontal = animatingVertical = false;
+
+		gameState = GameState.Resumed;
 	}
 
 	public void beginTransition()
@@ -63,6 +69,17 @@ public class Toolbox : Singleton<Toolbox> {
 	public bool isTransitioning()
 	{
 		return animatingZoom || animatingHorizontal || animatingVertical;
+	}
+
+	public void SetGameState(GameState newState)
+	{
+		gameState = newState;
+		if (newState == GameState.Inventory) {
+			touchManager.SetDragState (DragState.Inventory);
+		} else {
+			touchManager.ResetClick();
+			touchManager.ResetDoubleClick();
+		}
 	}
 
 	// function to clamp the angle based on given min and max

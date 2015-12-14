@@ -12,9 +12,14 @@ public class InventoryManager : MonoBehaviour {
 	/** The inventory item that is currently being highlighted within an MenuInventoryBox element */
 	[HideInInspector] public InvItem highlightItem = null;
 
+	public GameObject canvasGameObject;
 	public GameObject buttonPrefab;
 	public int inventorySlots;
+	public CustomCameraScript inventoryCamera;
+	public MainCameraScript mainCamera;
+	[HideInInspector] public CustomCameraScript originCamera;
 
+	private bool isViewingItem;
 	private int[] itemIds;
 
 	// Use this for initialization
@@ -25,32 +30,33 @@ public class InventoryManager : MonoBehaviour {
 		 * Slots squares that are 7% of the screen's width
 		 */
 		float idealSize = Screen.width * 0.07f;
-
+		
 		//Checking if idealSize for all slots fits screen height
 		float slotsHeight = 20 + (idealSize + 20) * inventorySlots;
 		while (slotsHeight > Screen.height) {
 			idealSize -= 3;
 			slotsHeight = 20 + (idealSize + 20) * inventorySlots;
 		}
-
+		
 		RectTransform btnTransform = buttonPrefab.GetComponent<RectTransform>();
 		btnTransform.sizeDelta = new Vector2 (idealSize, idealSize);
-
-		Vector2 position = new Vector2(20 + btnTransform.sizeDelta.x / 2, 20 + btnTransform.sizeDelta.y / 2);
-
+		
+		Vector2 position = new Vector2(btnTransform.sizeDelta.x / 2, btnTransform.sizeDelta.y / 2);
+		
 		//TODO: Center all items relative to screen height
 		for(int i = 0; i < inventorySlots; i++)
 		{
 			GameObject btn = (GameObject)Instantiate (buttonPrefab, position, Quaternion.identity);
-			btn.transform.SetParent(transform);
-
+			btn.transform.SetParent(canvasGameObject.transform, false);
+			
 			InvSlot slot = new InvSlot(i + 1, btn);
-			slotList.Add(slot);
-
 			AddBtnListener(slot);
-
+			
+			slotList.Add(slot);
 			position.y += btnTransform.sizeDelta.y + 20;
 		}
+		
+		Debug.Log ("Slots: " + slotList.Count);
 	}
 	
 	// Update is called once per frame
@@ -61,10 +67,12 @@ public class InventoryManager : MonoBehaviour {
 	public void PickUpGameObject(GameObject gameObject)
 	{
 		Debug.Log ("Pickup: " + gameObject.name);
+		Debug.Log ("Slots: " + slotList.Count);
 		InvItem newItem = new InvItem (gameObject);
 
 		foreach(InvSlot slot in slotList)
 		{
+			Debug.Log ("Item:" + slot.item + " SLOT: " + slot.id);
 			if(slot.item == null || (newItem.canStoreMultiple && slot.item.altLabel.Equals(newItem.altLabel)))
 			{
 				AddItemToSlot(newItem, slot);
@@ -87,19 +95,33 @@ public class InventoryManager : MonoBehaviour {
 	{
 		Button btn = slot.button.GetComponent<Button> ();
 		btn.onClick.AddListener (() => {
+			//Debug.Log (slot.item);
+			Debug.Log ("Slots: " + slotList.Count);
 			if(slot.item == null)
 				Debug.Log (slot.id + "- Empty");
 			else
 				Debug.Log(slot.id + "- " + slot.item.altLabel);
 
-			handleSlotClick(slot);
+			HandleSlotClick(slot);
 		});
 	}
 
 	void HandleSlotClick(InvSlot slot)
 	{
-		if (slot.item != null) {
+		if (isViewingItem) {
+			isViewingItem = false;
+			mainCamera.SetGameCamera(originCamera, 0);
+			Toolbox.Instance.SetGameState(GameState.Resumed);
+		}
+		else if (slot.item != null) 
+		{
+			isViewingItem = true;
+			originCamera = mainCamera.currentCamera;
+			mainCamera.SetGameCamera(inventoryCamera, 0);
+			Toolbox.Instance.SetGameState(GameState.Inventory);
 
+			//GameObject displayed = (GameObject)Instantiate(slot.item.gameObject, Vector2.zero, Quaternion.identity);
+			//displayed.transform.SetParent(inventoryGameObject.transform);
 		}
 	}
 }
