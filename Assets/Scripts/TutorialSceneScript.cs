@@ -56,13 +56,17 @@ public class TutorialSceneScript : MonoBehaviour {
 	Toolbox toolbox;
 
 	// Use this for initialization
+	void Awake()
+	{
+		toolbox = Toolbox.Instance;
+	}
+
 	void Start () {
 		Debug.Log("Starting tutorial level");
 		shownBoxAnimation = false;
 		endingCenterAnimation = false;
 		showingPortalAnimation = false;
 
-		toolbox = Toolbox.Instance;
 		toolbox.SetUpForLevelBegin ();
 
 		GameObject tableObj = GameObject.Find ("Table");

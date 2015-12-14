@@ -21,7 +21,7 @@ public class CameraZoom : MonoBehaviour {
 
 	Toolbox toolbox;
 
-	MainCameraScript mainCamera;
+	public static MainCameraScript mainCamera;
 
 	// Use this for initialization
 	void Start () {
@@ -73,6 +73,8 @@ public class CameraZoom : MonoBehaviour {
 		float minPinchSpeed = 10.0f;
 		float varianceInDistances = 5.0f;
 
+		//Debug.Log (Toolbox.Instance.touchManager.GetMouseState().ToString());
+
 		if (!isOverUI() && !toolbox.isTransitioning()) {
 
 			// On non touch devices, zoom is left click, zoom out is right click
@@ -85,6 +87,7 @@ public class CameraZoom : MonoBehaviour {
 				RaycastHit hit2;
 				if (Physics.Raycast (ray, out hit2)) {
 					if (hit2.collider != null && hit2.collider.gameObject != target && hit2.collider.CompareTag ("Dbl-Clickable")) {
+
 						if (hit2.collider != null && hit2.collider.CompareTag ("Dbl-Clickable")) {
 							if(targetProperties.onlyAllowChildColliders){
 								if(hit2.collider.gameObject.transform.IsChildOf(target.transform)){

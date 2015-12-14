@@ -14,26 +14,35 @@ public class InvItem
 	public Sprite image;
 	/* If multiple instances of the item can be stored */
 	public bool canStoreMultiple;
-	
+	/* Item GameObject */
+	public GameObject gameObject;
+
 	/**
 		 * <summary>The default Constructor.</summary>
 		 * <param name = "idArray">An array of already-used ID numbers, so that a unique ID number can be assigned</param>
 		 */
-	public InvItem (int[] idArray, Sprite img)
+	public InvItem (/*int[] idArray, */GameObject itemObject)
 	{
 		id = 0;
-		
+		/*
 		// Update id based on array
 		foreach (int _id in idArray)
 		{
 			if (id == _id)
 				id ++;
 		}
+		*/
 		
 		label = "Inventory item " + (id + 1).ToString ();
 		altLabel = "";
-		image = img;
 		canStoreMultiple = false;
+		gameObject = itemObject;
+
+		PickupProperties properties = itemObject.GetComponent<PickupProperties> ();
+		if (properties != null) {
+			image = properties.image;
+			altLabel = properties.pickupName;
+		}
 	}
 	
 	

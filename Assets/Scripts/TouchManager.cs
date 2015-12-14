@@ -7,12 +7,12 @@ public class TouchManager : MonoBehaviour
 	private DragState dragState = DragState.None;
 	
 	/** The minimum duration, in seconds, that can elapse between mouse clicks */
-	public float clickDelay = 0.1f;
+	public float clickDelay = 1.0f;
 	/**<The maximum duration, in seconds, between two successive mouse clicks to register a "double-click" */
-	public float doubleClickDelay = 0.2f;
+	public float doubleClickDelay = 0.4f;
 	
 	private float clickTime = 0f;
-	private float doubleClickTime = 0;
+	private float doubleClickTime = 0f;
 	private bool hasUnclickedSinceClick = false;
 	private bool lastClickWasDouble = false;
 
@@ -32,20 +32,29 @@ public class TouchManager : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
-	
+		ResetClick ();
+		ResetDoubleClick ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (!Toolbox.Instance.isTransitioning ()) {
 			UpdateInput ();
-		}
+			if(dragState != DragState.Inventory)
+			{
+				CheckForClicks ();
+			}
+			else
+			{
+				//UpdateInventoryScreenInput();
+			}
+		} 
 	}
 
 	public void ResetForTransition()
 	{
+		SetDragState (DragState.None);
 		mouseState = MouseState.Normal;
-		dragState = DragState.None;
 		dragVector = Vector2.zero;
 		
 		ResetClick ();
@@ -65,6 +74,11 @@ public class TouchManager : MonoBehaviour
 	{
 		return dragState;
 	}
+
+	public MouseState GetMouseState()
+	{
+		return mouseState;
+	}
 	
 	public Vector2 GetDragVector ()
 	{
@@ -75,13 +89,10 @@ public class TouchManager : MonoBehaviour
 		return dragVector;
 	}
 	
-	private void SetDragState ()
+	public void SetDragState (DragState newState)
 	{
-		dragState = DragState._Camera;
-		if (deltaDragMouse.magnitude * Time.deltaTime <= 1f && (GetInvertedMouse () - dragStartPosition).magnitude < 10f)
-		{
-			dragState = DragState.None;
-		}
+		dragState = newState;
+		//Debug.Log (dragState.ToString());
 	}
 	
 	/**
@@ -100,6 +111,8 @@ public class TouchManager : MonoBehaviour
 	
 	public void UpdateInput ()
 	{
+		//Debug.Log ("C: "+clickTime);
+		//Debug.Log ("D: "+doubleClickTime);
 		if (clickTime > 0f)
 		{
 			clickTime -= 4f * GetDeltaTime ();
@@ -111,6 +124,7 @@ public class TouchManager : MonoBehaviour
 		
 		if (doubleClickTime > 0f)
 		{
+			//Debug.Log ("" + doubleClickDelay * GetDeltaTime());
 			doubleClickTime -= 4f * GetDeltaTime ();
 		}
 		if (doubleClickTime < 0f)
@@ -120,7 +134,7 @@ public class TouchManager : MonoBehaviour
 		
 		if (mouseState == MouseState.Normal)
 		{
-			dragState = DragState.None;
+			SetDragState(DragState.None);
 		}
 		
 		
@@ -130,8 +144,7 @@ public class TouchManager : MonoBehaviour
 		if (Input.GetMouseButtonUp (0)) {
 			holdTimer = 0;
 		}
-		
-		
+
 		//First time click
 		if (Input.GetMouseButtonDown (0))
 		{
@@ -160,12 +173,23 @@ public class TouchManager : MonoBehaviour
 		else if (Input.GetMouseButton (0))
 		{
 			mouseState = MouseState.HeldDown;
-			SetDragState ();
+			GameState gameState = Toolbox.Instance.gameState;
+			if(gameState == GameState.Resumed) {
+				SetDragState (DragState._Camera);
+			}
+			else if(gameState == GameState.Inventory)
+			{
+				SetDragState (DragState.Inventory);
+			}
+
+			if (deltaDragMouse.magnitude * Time.deltaTime <= 1f && (GetInvertedMouse () - dragStartPosition).magnitude < 10f) {
+				SetDragState(DragState.None);
+			}
 		}
 		//Release click
 		else
 		{
-			if (mouseState == MouseState.HeldDown && dragState == DragState.None && CanClick ())
+			if (mouseState == MouseState.HeldDown && CanClick ())
 			{
 				mouseState = MouseState.LetGo;
 			}
@@ -203,6 +227,28 @@ public class TouchManager : MonoBehaviour
 			dragSpeed = 0f;
 		}
 	}
+
+	private void CheckForClicks()
+	{
+		if (mouseState == MouseState.SingleClick) 
+		{
+			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+			if (Input.touchCount > 0) {
+				ray = Camera.main.ScreenPointToRay (Input.GetTouch (0).position);
+			}
+			RaycastHit hit;
+			if (Physics.Raycast (ray, out hit)) {
+				if (hit.collider.CompareTag ("Pickup")) {
+					/*
+					GameObject canvas = GameObject.Find ("Canvas");
+					InventoryManager manager = canvas.GetComponent<InventoryManager>();
+					manager.PickUpGameObject (hit.collider.gameObject);
+					*/
+					Toolbox.Instance.inventoryManager.PickUpGameObject (hit.collider.gameObject);
+				}
+			}
+		}
+	}
 	
 	private float GetDeltaTime ()
 	{
@@ -215,12 +261,7 @@ public class TouchManager : MonoBehaviour
 	
 	public bool CanDoubleClick ()
 	{
-		if (doubleClickTime > 0f && clickTime == 0f)
-		{
-			return true;
-		}
-		
-		return false;
+		return doubleClickTime > 0f && clickTime == 0f;
 	}
 	
 	/**
@@ -244,12 +285,7 @@ public class TouchManager : MonoBehaviour
 		 */
 	public bool CanClick ()
 	{
-		if (clickTime == 0f)
-		{
-			return true;
-		}
-		
-		return false;
+		return clickTime == 0f;
 	}
 	
 	/**

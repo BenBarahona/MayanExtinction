@@ -5,7 +5,7 @@ public class CustomCameraScript : MonoBehaviour {
 
 	public Transform target;
 
-	public Camera _camera;
+	[HideInInspector] public Camera _camera;
 	// Use this for initialization
 
 	public RotationLock spinLock = RotationLock.Free;
@@ -98,7 +98,7 @@ public class CustomCameraScript : MonoBehaviour {
 		SnapMovement ();
 		enabled = false;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 	

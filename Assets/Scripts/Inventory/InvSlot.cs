@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class InvSlot 
@@ -10,21 +11,40 @@ public class InvSlot
 	public int id;
 	/* Item currently in slot */
 	public InvItem item;
-	/* The slot gameobject button */
+	//public bool hasItem;
+	/* The slot gameobject button (The prefab, basically) */
 	public GameObject button;
-
+	/* The Slot's image object */
+	public Image image;
+	/* Default empty slot sprite */
+	private Sprite defaultSprite;
 	/**
 		 * <summary>The default Constructor.</summary>
 		 * <param name = "idArray">An array of already-used ID numbers, so that a unique one can be generated</param>
 		 * <param name = "id"> unique ID </param>
 		 * <param name = "gameObject"> The button on the screen </param>
 		 */
-	public InvSlot (int id, GameObject gameObject)
+	public InvSlot (int newId, GameObject gameObject)
 	{
-		this.id = id;
-		this.button = gameObject;
-		this.label = "Slot " + id.ToString();
-		this.item = null;
+		id = newId;
+		button = gameObject;
+		label = "Slot[" + id.ToString() + "]";
+		item = null;
+		//hasItem = false;
+
+		if (gameObject != null) {
+			GameObject imageObj = gameObject.transform.Find ("Image").gameObject;
+			image = imageObj.GetComponent<Image> ();
+		
+			//TODO: This should be another sprite, loaded from resources
+			defaultSprite = image.sprite;
+		}
+	}
+
+	public void RemoveItem()
+	{
+		item = null;
+		image.sprite = defaultSprite;
 	}
 	/*
 	public InvSlot (int[] idArray)
