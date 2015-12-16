@@ -5,6 +5,8 @@ public class CustomCameraScript : MonoBehaviour {
 
 	public Transform target;
 
+	public CameraType cameraType = CameraType.Target;
+
 	[HideInInspector] public Camera _camera;
 	// Use this for initialization
 
@@ -84,17 +86,20 @@ public class CustomCameraScript : MonoBehaviour {
 		if (GetComponent <Camera>())
 		{
 			_camera = GetComponent <Camera>();
-			Debug.Log("Camera name" + _camera.transform.name);
 		}
 		initialPitch = transform.eulerAngles.x;
 		initialSpin = transform.eulerAngles.y;
+
+
 	}
 	void Start () {
 		Vector3 angles = transform.eulerAngles;
 		spin = angles.y;
 		roll = angles.z; 
-		
+
+
 		UpdateTargets ();
+
 		SnapMovement ();
 		enabled = false;
 	}
@@ -107,7 +112,9 @@ public class CustomCameraScript : MonoBehaviour {
 	private void SnapMovement ()
 	{
 		transform.rotation = targetRotation;
-		transform.position = targetPosition;
+		if (cameraType == CameraType.Target) {
+			transform.position = targetPosition;
+		}
 	}
 
 	public void ResetRotation ()
@@ -121,7 +128,7 @@ public class CustomCameraScript : MonoBehaviour {
 			spin = initialSpin;
 		}
 
-		if (!CameraIsFixed) {
+		if (cameraType != CameraType.Fixed) {
 			UpdateTargets ();
 			SnapMovement ();
 		}
@@ -145,21 +152,23 @@ public class CustomCameraScript : MonoBehaviour {
 
 	private void FixedUpdate ()
 	{
-		if (CameraIsFixed) {
+		if (cameraType == CameraType.Fixed) {
 			return;
 		}
-
+			
 		UpdateTargets ();
 		DetectCollisions ();
 
 		transform.rotation = Quaternion.Lerp (transform.rotation, targetRotation, Time.deltaTime * 10f);
 
-		transform.position = Vector3.Lerp (transform.position, targetPosition - (targetPosition - centrePosition).normalized * actualCollisionOffset, Time.deltaTime * 10f);
+		if (cameraType == CameraType.Target) {
+			transform.position = Vector3.Lerp (transform.position, targetPosition - (targetPosition - centrePosition).normalized * actualCollisionOffset, Time.deltaTime * 10f);
+		}
 	}
 
 	void UpdateTargets()
 	{
-		if (!target)
+		if ((!target && this.cameraType == CameraType.Target) || cameraType == CameraType.Fixed)
 		{
 			return;
 		}
@@ -281,14 +290,18 @@ public class CustomCameraScript : MonoBehaviour {
 		
 		Quaternion rotation = Quaternion.Euler (finalPitch, finalSpin, roll);
 		targetRotation = rotation;
-		
-		centrePosition = target.position + (Vector3.up * verticalOffset) + (rotation * Vector3.right * horizontalOffset);
-		targetPosition = centrePosition - (rotation * Vector3.forward * distance);
+
+		if (cameraType == CameraType.Target) {
+			centrePosition = target.position + (Vector3.up * verticalOffset) + (rotation * Vector3.right * horizontalOffset);
+			targetPosition = centrePosition - (rotation * Vector3.forward * distance);
+		} 
 	}
 
 	public void beganCameraTransition()
 	{
 		targetRotation = transform.rotation;
-		targetPosition = transform.position;
+		if (cameraType == CameraType.Target) {
+			targetPosition = transform.position;
+		}
 	}
 }
