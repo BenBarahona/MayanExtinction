@@ -18,11 +18,11 @@ public class Toolbox : Singleton<Toolbox> {
 	public Puzzle currentPuzzle;
 
 	void Awake () {
+		Debug.Log ("Creating Toolbox");
 		//GameObject main = GameObject.Find ("/MainGameObj");
 		//scene = main.GetComponent <TutorialSceneScript>();
 		currentTargetProperties = gameObject.AddComponent<ObjectProperties>();
 		touchManager = gameObject.AddComponent<TouchManager>();
-		inventoryManager = GameObject.Find ("/Inventory").GetComponent<InventoryManager> ();
 
 		animatingZoom = animatingHorizontal = animatingVertical = false;
 
@@ -41,7 +41,6 @@ public class Toolbox : Singleton<Toolbox> {
 		
 		currentTargetProperties = gameObject.AddComponent<ObjectProperties>();
 		touchManager = gameObject.AddComponent<TouchManager>();
-		inventoryManager = GameObject.Find ("/Canvas").GetComponent<InventoryManager> ();
 		
 		animatingZoom = animatingHorizontal = animatingVertical = false;
 

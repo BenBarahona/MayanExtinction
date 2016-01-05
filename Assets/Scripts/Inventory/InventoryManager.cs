@@ -18,12 +18,22 @@ public class InventoryManager : MonoBehaviour {
 	public CustomCameraScript inventoryCamera;
 	public MainCameraScript mainCamera;
 	[HideInInspector] public CustomCameraScript originCamera;
+	[HideInInspector] public GameObject inventoryGameObject;
 
 	private bool isViewingItem;
 	private int[] itemIds;
+	private GameObject displayedObj;
+
+	void Awake()
+	{
+		Debug.Log ("Inv Manager Awake");
+	}
 
 	// Use this for initialization
 	void Start () {
+
+		Debug.Log ("Inv Manager Start");
+
 		slotList = new List<InvSlot>();
 
 		/* Creating inventory slots
@@ -57,6 +67,8 @@ public class InventoryManager : MonoBehaviour {
 		}
 		
 		Debug.Log ("Slots: " + slotList.Count);
+		Toolbox.Instance.inventoryManager = this;
+		inventoryGameObject = GameObject.Find ("/Inventory");
 	}
 	
 	// Update is called once per frame
@@ -79,7 +91,7 @@ public class InventoryManager : MonoBehaviour {
 				break;
 			}
 		}
-
+		//gameObject.SetActive (false);
 		Destroy (gameObject);
 	}
 
@@ -112,16 +124,19 @@ public class InventoryManager : MonoBehaviour {
 			isViewingItem = false;
 			mainCamera.SetGameCamera(originCamera, 0);
 			Toolbox.Instance.SetGameState(GameState.Resumed);
+			Destroy(displayedObj);
 		}
 		else if (slot.item != null) 
 		{
+			//Debug.Log (slot.item.gameObject);
 			isViewingItem = true;
 			originCamera = mainCamera.currentCamera;
 			mainCamera.SetGameCamera(inventoryCamera, 0);
 			Toolbox.Instance.SetGameState(GameState.Inventory);
-
-			//GameObject displayed = (GameObject)Instantiate(slot.item.gameObject, Vector2.zero, Quaternion.identity);
-			//displayed.transform.SetParent(inventoryGameObject.transform);
+			displayedObj = (GameObject)Instantiate(slot.item.gameObject, Vector2.zero, Quaternion.identity);
+			displayedObj.SetActive(true);
+			displayedObj.transform.SetParent(inventoryGameObject.transform, false);
+			displayedObj.AddComponent<SpinObject>();
 		}
 	}
 }

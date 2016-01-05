@@ -24,22 +24,14 @@ public class InvItem
 	public InvItem (/*int[] idArray, */GameObject itemObject)
 	{
 		id = 0;
-		/*
-		// Update id based on array
-		foreach (int _id in idArray)
-		{
-			if (id == _id)
-				id ++;
-		}
-		*/
 		
 		label = "Inventory item " + (id + 1).ToString ();
 		altLabel = "";
 		canStoreMultiple = false;
-		gameObject = itemObject;
 
 		PickupProperties properties = itemObject.GetComponent<PickupProperties> ();
 		if (properties != null) {
+			gameObject = properties.prefab;
 			image = properties.image;
 			altLabel = properties.pickupName;
 		}

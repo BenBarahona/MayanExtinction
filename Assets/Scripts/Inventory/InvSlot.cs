@@ -30,7 +30,6 @@ public class InvSlot
 		button = gameObject;
 		label = "Slot[" + id.ToString() + "]";
 		item = null;
-		//hasItem = false;
 
 		if (gameObject != null) {
 			GameObject imageObj = gameObject.transform.Find ("Image").gameObject;
