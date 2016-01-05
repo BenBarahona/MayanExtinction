@@ -7,6 +7,7 @@ public enum CameraStates {
 };
 
 public enum RotationLock {Free, Locked, Limited };
+public enum CameraType {Target, Fixed, Normal}
 
 public enum MouseState { Normal, SingleClick, RightClick, DoubleClick, HeldDown, LetGo };
 public enum DragState { None, Inventory, _Camera };

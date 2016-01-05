@@ -42,24 +42,7 @@ public class CameraZoom : MonoBehaviour {
 	}
 
 	void Update () {
-		/*if(toolbox.animatingZoom)
-		{
-			float deltaTime = Time.time - zoomStartTime;
-			float percentage = deltaTime / 1.0f;
-
-			cameraObj.transform.position = Vector3.Lerp (moveStartPos, target.transform.position, percentage);
-
-			Vector3 negDistance = new Vector3(0, 0, -targetProperties.distance);
-			Vector3 newPosition = transform.localRotation * negDistance;
-			transform.localPosition = Vector3.Lerp(zoomStartPos, newPosition, percentage);
-
-			if(percentage >= 1.0f)
-			{
-				transform.localPosition = newPosition;
-				cameraObj.transform.position = target.transform.position;
-				toolbox.animatingZoom = false;
-			}
-		}*/
+		
 	}
 	
 	// Update is called once per frame
@@ -73,11 +56,8 @@ public class CameraZoom : MonoBehaviour {
 		float minPinchSpeed = 10.0f;
 		float varianceInDistances = 5.0f;
 
-		//Debug.Log (Toolbox.Instance.touchManager.GetMouseState().ToString());
-
 		if (!isOverUI() && !toolbox.isTransitioning()) {
 
-			// On non touch devices, zoom is left click, zoom out is right click
 			#if UNITY_WEBPLAYER || UNITY_STANDALONE || UNITY_EDITOR
 			if(Input.GetMouseButton(0))
 				holdTimer++;
@@ -101,12 +81,6 @@ public class CameraZoom : MonoBehaviour {
 				}
 			} else if (Input.GetMouseButtonDown (1) && target != environmentTarget) {
 				zoomOut();
-				/*
-				if (parentStack.Peek () == environmentTarget) {
-					setNewTarget (parentStack.Peek (), true);
-				} else {
-					setNewTarget (parentStack.Pop (), true);
-				}*/
 			}
 
 			//Reset timer when user releases mouse btn
@@ -130,15 +104,8 @@ public class CameraZoom : MonoBehaviour {
 									zoomIn(hit.collider.gameObject, true);
 								}
 							}else{
-								Debug.Log("Any colliders");
 								zoomIn(hit.collider.gameObject, true);
 							}
-							/*
-							if (hit.collider.gameObject == target) {
-								setNewTarget (parentStack.Pop (), true);
-							} else {
-								setNewTarget (hit.collider.gameObject, true);
-							}*/
 						}
 					}
 				} else if (Input.touchCount == 2 && target != environmentTarget) {
