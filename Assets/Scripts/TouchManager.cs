@@ -44,10 +44,6 @@ public class TouchManager : MonoBehaviour
 			{
 				CheckForClicks ();
 			}
-			else
-			{
-				//UpdateInventoryScreenInput();
-			}
 		} 
 	}
 

@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/_Scenes/scene1extended.unity
   - enabled: 0
     path: Assets/_Scenes/Benjamin.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Miguel.unity
