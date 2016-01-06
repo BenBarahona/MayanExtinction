@@ -7,7 +7,8 @@ public class ObjectProperties : MonoBehaviour {
 	
 	public bool isPuzzle;
 
-	public CustomCameraScript customCamera;
+	//public CustomCameraScript customCamera;
+	public CameraOrbitScript customCamera;
 
 	public float transitionTime = 1f;
 

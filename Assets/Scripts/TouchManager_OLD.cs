@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TouchManager : MonoBehaviour {
-
+public class TouchManager_OLD : MonoBehaviour 
+{	
 	private MouseState mouseState = MouseState.Normal;
 	private DragState dragState = DragState.None;
 	
@@ -15,7 +15,7 @@ public class TouchManager : MonoBehaviour {
 	private float doubleClickTime = 0f;
 	private bool hasUnclickedSinceClick = false;
 	private bool lastClickWasDouble = false;
-	
+
 	// Controller movement
 	private Vector2 mousePosition;
 	
@@ -27,9 +27,9 @@ public class TouchManager : MonoBehaviour {
 	// Draggable
 	private Vector2 lastMousePosition;
 	private Vector2 deltaDragMouse;
-	
+
 	private int holdTimer = 0;
-	
+
 	// Use this for initialization
 	void Start () {
 		ResetClick ();
@@ -45,8 +45,10 @@ public class TouchManager : MonoBehaviour {
 				CheckForClicks ();
 			}
 		}
+
+		Debug.Log (mouseState);
 	}
-	
+
 	public void ResetForTransition()
 	{
 		SetDragState (DragState.None);
@@ -56,7 +58,7 @@ public class TouchManager : MonoBehaviour {
 		ResetClick ();
 		ResetDoubleClick ();
 	}
-	
+
 	private void UpdateDrag ()
 	{
 		// Calculate change in mouse position
@@ -70,7 +72,7 @@ public class TouchManager : MonoBehaviour {
 	{
 		return dragState;
 	}
-	
+
 	public MouseState GetMouseState()
 	{
 		return mouseState;
@@ -140,7 +142,7 @@ public class TouchManager : MonoBehaviour {
 		if (Input.GetMouseButtonUp (0)) {
 			holdTimer = 0;
 		}
-		
+
 		//First time click
 		if (Input.GetMouseButtonDown (0))
 		{
@@ -177,7 +179,7 @@ public class TouchManager : MonoBehaviour {
 			{
 				SetDragState (DragState.Inventory);
 			}
-			
+
 			if (deltaDragMouse.magnitude * Time.deltaTime <= 1f && (GetInvertedMouse () - dragStartPosition).magnitude < 10f) {
 				SetDragState(DragState.None);
 			}
@@ -223,7 +225,7 @@ public class TouchManager : MonoBehaviour {
 			dragSpeed = 0f;
 		}
 	}
-	
+
 	private void CheckForClicks()
 	{
 		if (mouseState == MouseState.SingleClick) 
@@ -235,6 +237,12 @@ public class TouchManager : MonoBehaviour {
 			RaycastHit hit;
 			if (Physics.Raycast (ray, out hit)) {
 				if (hit.collider.CompareTag ("Pickup")) {
+
+					/*
+					GameObject canvas = GameObject.Find ("Canvas");
+					InventoryManager manager = canvas.GetComponent<InventoryManager>();
+					manager.PickUpGameObject (hit.collider.gameObject);
+					*/
 					Toolbox.Instance.inventoryManager.PickUpGameObject (hit.collider.gameObject);
 				}
 			}
@@ -298,4 +306,5 @@ public class TouchManager : MonoBehaviour {
 			lastClickWasDouble = false;
 		}
 	}
+
 }

@@ -7,7 +7,8 @@ public class CameraZoom : MonoBehaviour {
 	public GameObject environmentTarget;
 	//public GameObject cameraObj;
 
-	ObjectProperties targetProperties;
+	//ObjectProperties targetProperties;
+	CameraProperties targetProperties;
 	GameObject target;
 
 	Stack<GameObject> parentStack;
@@ -69,6 +70,8 @@ public class CameraZoom : MonoBehaviour {
 					if (hit2.collider != null && hit2.collider.gameObject != target && hit2.collider.CompareTag ("Dbl-Clickable")) {
 
 						if (hit2.collider != null && hit2.collider.CompareTag ("Dbl-Clickable")) {
+							zoomIn(hit2.collider.gameObject, true);
+							/*
 							if(targetProperties.onlyAllowChildColliders){
 								if(hit2.collider.gameObject.transform.IsChildOf(target.transform)){
 									zoomIn(hit2.collider.gameObject, true);
@@ -76,7 +79,8 @@ public class CameraZoom : MonoBehaviour {
 							}else{
 								zoomIn(hit2.collider.gameObject, true);
 							}
-						}//setNewTarget (hit2.collider.gameObject, true);
+							*/
+						}
 					}
 				}
 			} else if (Input.GetMouseButtonDown (1) && target != environmentTarget) {
@@ -97,7 +101,8 @@ public class CameraZoom : MonoBehaviour {
 					RaycastHit hit;
 					if (touch.tapCount == 2 && Physics.Raycast (ray, out hit)) {
 						if (hit.collider != null && hit.collider.CompareTag ("Dbl-Clickable")) {
-							Debug.Log("Hit a collider");
+							zoomIn(hit.collider.gameObject, true);
+							/*
 							if(targetProperties.onlyAllowChildColliders){
 								Debug.Log("Only child colliders!");
 								if(hit.collider.gameObject.transform.IsChildOf(target.transform)){
@@ -106,6 +111,7 @@ public class CameraZoom : MonoBehaviour {
 							}else{
 								zoomIn(hit.collider.gameObject, true);
 							}
+							*/
 						}
 					}
 				} else if (Input.touchCount == 2 && target != environmentTarget) {
@@ -137,8 +143,8 @@ public class CameraZoom : MonoBehaviour {
 
 	void zoomIn(GameObject newTarget, bool isTransition){
 		if (newTarget != null) {
-			ObjectProperties newObjectProperties = newTarget.GetComponent<ObjectProperties>();
-			if(newObjectProperties != null && newObjectProperties.customCamera != null){
+			CameraProperties newCamProperties = newTarget.GetComponent<CameraProperties>();
+			if(newCamProperties != null && newCamProperties.customCamera != null){
 				//Pushes current target to the stack
 				parentStack.Push (target);
 				//Disables current target's puzzle
@@ -155,7 +161,7 @@ public class CameraZoom : MonoBehaviour {
 
 				//Setting new target to local var
 				target = newTarget;
-				targetProperties = newObjectProperties;
+				targetProperties = newCamProperties;
 				
 				//Setting global vars to new values
 				toolbox.currentTargetProperties.setValuesFromProperties(targetProperties, newTarget.transform);

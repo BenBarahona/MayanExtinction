@@ -4,7 +4,7 @@ using System.Collections;
 public class MainCameraScript : MonoBehaviour {
 
 	// Use this for initialization
-	public CustomCameraScript currentCamera;
+	[HideInInspector] public CameraOrbitScript currentCamera;
 	private Camera _camera;
 
 	private float changeTime;
@@ -61,7 +61,7 @@ public class MainCameraScript : MonoBehaviour {
 		}
 	}
 
-	public void SetGameCamera(CustomCameraScript newCamera, float transitionTime){
+	public void SetGameCamera(CameraOrbitScript newCamera, float transitionTime){
 		if (newCamera == null) {
 			return;
 		}
@@ -70,7 +70,7 @@ public class MainCameraScript : MonoBehaviour {
 		if (currentCamera != null) {
 			currentCamera.enabled = false;
 		}
-		newCamera.ResetRotation ();
+		//newCamera.ResetRotation ();
 		currentCamera = newCamera;
 
 		_camera.farClipPlane = currentCamera._camera.farClipPlane;

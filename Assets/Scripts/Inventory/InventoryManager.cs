@@ -15,9 +15,11 @@ public class InventoryManager : MonoBehaviour {
 	public GameObject canvasGameObject;
 	public GameObject buttonPrefab;
 	public int inventorySlots;
-	public CustomCameraScript inventoryCamera;
+
+	public CameraOrbitScript inventoryCamera;
 	public MainCameraScript mainCamera;
-	[HideInInspector] public CustomCameraScript originCamera;
+
+	[HideInInspector] public CameraOrbitScript originalCamera;
 	[HideInInspector] public GameObject inventoryGameObject;
 
 	private bool isViewingItem;
@@ -122,7 +124,7 @@ public class InventoryManager : MonoBehaviour {
 	{
 		if (isViewingItem) {
 			isViewingItem = false;
-			mainCamera.SetGameCamera(originCamera, 0);
+			mainCamera.SetGameCamera(originalCamera, 0);
 			Toolbox.Instance.SetGameState(GameState.Resumed);
 			Destroy(displayedObj);
 		}
@@ -130,7 +132,7 @@ public class InventoryManager : MonoBehaviour {
 		{
 			//Debug.Log (slot.item.gameObject);
 			isViewingItem = true;
-			originCamera = mainCamera.currentCamera;
+			originalCamera = mainCamera.currentCamera;
 			mainCamera.SetGameCamera(inventoryCamera, 0);
 			Toolbox.Instance.SetGameState(GameState.Inventory);
 			displayedObj = (GameObject)Instantiate(slot.item.gameObject, Vector2.zero, Quaternion.identity);
